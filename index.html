@@ -490,6 +490,82 @@
       color: var(--text);
     }
 
+    /* CLIENT STORIES */
+    .stories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .story-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px 26px 26px;
+      display: flex; flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .story-card:hover { border-color: #cbd5e1; }
+    .story-result {
+      display: flex; flex-direction: column;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .story-num {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 34px);
+      font-weight: 400;
+      font-variation-settings: "opsz" 144;
+      color: var(--red);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-style: italic;
+      display: inline-flex; align-items: baseline; gap: 6px;
+      flex-wrap: wrap;
+    }
+    .story-num-suffix {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; font-style: normal;
+      color: var(--text);
+      letter-spacing: 0;
+    }
+    .story-num-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .story-meta {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .story-name {
+      font-size: 15.5px; font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+    .story-handle {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .story-desc {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #374151;
+      margin: 0;
+    }
+    @media (max-width: 900px) {
+      .stories { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    }
+    @media (max-width: 600px) {
+      .stories { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; gap: 12px; }
+      .story-card { padding: 26px 22px 22px; }
+    }
+
     /* Trustpilot badge */
     .trustpilot-badge {
       display: inline-flex; align-items: center; gap: 10px;
@@ -997,8 +1073,93 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- CLIENT STORIES (beginners) -->
 <section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Real Beginners, Real Results</span>
+      <h2>From Zero To Profitable</h2>
+      <p class="section-lead">A few of the members who started with no audience, no offer, and no experience.</p>
+    </div>
+
+    <div class="stories">
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">$123K+ <span class="story-num-suffix">/mo</span></span>
+          <span class="story-num-label">From zero · 6 months</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Matt Par</span>
+          <span class="story-handle">@makemoneymatt</span>
+        </div>
+        <p class="story-desc">Started with no offer and no audience. Hit $123k+ per month within 6 months and $5M+ in total sales monetising what he already knew.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">500K <span class="story-num-suffix">followers</span></span>
+          <span class="story-num-label">From zero · 1 year · Faceless</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Roland</span>
+          <span class="story-handle">@wave4wealth</span>
+        </div>
+        <p class="story-desc">Built a faceless theme page from scratch to 500k followers in a single year. First $10k in sales without showing his face or owning a product.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">300K+ <span class="story-num-suffix">followers</span></span>
+          <span class="story-num-label">From zero · 1 year</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Linford</span>
+          <span class="story-handle">@mindsetmirage</span>
+        </div>
+        <p class="story-desc">After 8 failed businesses and $10k in debt, built a faceless theme page from zero to 300k+ followers and a real income stream.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">380K <span class="story-num-suffix">followers</span></span>
+          <span class="story-num-label">From zero · 1 year</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Kelly Sloan</span>
+          <span class="story-handle">@daily.money.matters</span>
+        </div>
+        <p class="story-desc">No online income, no idea where to start. Followed the system from zero to 380k followers in a year with 2k+ new followers daily.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">$170K <span class="story-num-suffix">record month</span></span>
+          <span class="story-num-label">From &lt;$100 per day</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Lorenzo &amp; Edoardo</span>
+          <span class="story-handle">Italian e-learning</span>
+        </div>
+        <p class="story-desc">Started barely earning $100 per day. Hit a $170k record month and $800k+ in total sales after applying the playbook.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">$15K <span class="story-num-suffix">in 6 weeks</span></span>
+          <span class="story-num-label">230K+ followers · Faceless</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Melory</span>
+          <span class="story-handle">@bossbabemaverick</span>
+        </div>
+        <p class="story-desc">Struggled to make money online with no mentor. Grew to 230k+ followers and earned $15k in just 6 weeks running a faceless page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-soft">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Real Member Reviews</span>
@@ -1204,7 +1365,7 @@
   // Scroll-reveal: fade-up elements as they enter the viewport
   (function() {
     const targets = document.querySelectorAll(
-      '.section-head, .modules, .bonus-banner, .founder-grid, .test-carousel, .price-card, .faq-block, .stats-strip-inner'
+      '.section-head, .modules, .bonus-banner, .founder-grid, .stories, .test-carousel, .price-card, .faq-block, .stats-strip-inner'
     );
     targets.forEach(el => el.classList.add('reveal'));
 
