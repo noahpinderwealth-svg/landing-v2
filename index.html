@@ -202,27 +202,28 @@
       max-width: 580px;
     }
 
-    /* CTA group sits BELOW the video as the next action after watching. */
+    /* CTA group sits BELOW the video as the next action after watching.
+       Stacked vertically with the price block as compact microcopy. */
     .hero-cta-block {
-      display: flex; align-items: center; justify-content: center;
-      column-gap: 22px; row-gap: 14px;
-      flex-wrap: wrap;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 12px;
       margin: 0;
     }
     .hero-cta-price {
-      display: flex; flex-direction: column; line-height: 1.25;
-      font-size: 12.5px; color: var(--muted-on-dark);
-      letter-spacing: 0.2px;
-      text-align: left;
+      display: inline-flex; align-items: baseline; flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 8px; row-gap: 2px;
+      font-size: 13px; color: var(--muted-on-dark);
+      letter-spacing: 0.2px; text-align: center;
     }
     .hero-cta-price strong {
-      font-size: 18px; color: var(--text-on-dark); font-weight: 800;
-      letter-spacing: -0.2px;
-      display: inline-flex; align-items: baseline; gap: 8px;
+      color: var(--text-on-dark); font-weight: 800;
+      letter-spacing: -0.1px; font-size: 14px;
     }
     .hero-cta-price s {
-      color: #6b7280; font-size: 14px; font-weight: 500; text-decoration: line-through;
+      color: #6b7280; font-size: 13px; font-weight: 500; text-decoration: line-through;
     }
+    .hero-cta-price .dot { color: rgba(255,255,255,0.25); }
 
     /* Slim credibility strip BELOW the hero. Inline metrics separated by a thin
        divider so they read as a single horizontal credibility line, not three
@@ -284,11 +285,19 @@
     /* WHATS INSIDE */
     .modules {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 16px;
     }
+    /* 5 modules in 3 + 2 layout via 6-col grid:
+       row 1 = three 2-col items, row 2 = two 2-col items starting at col 2 (centered) */
+    .modules .module { grid-column: span 2; }
+    .modules .module:nth-child(4) { grid-column: 2 / span 2; }
+    .modules .module:nth-child(5) { grid-column: 4 / span 2; }
     @media (max-width: 900px) {
       .modules { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .modules .module,
+      .modules .module:nth-child(4) { grid-column: auto; }
+      .modules .module:nth-child(5) { grid-column: 1 / -1; } /* span full row */
     }
     .module {
       background: #fff;
@@ -319,47 +328,80 @@
       font-size: 14.5px; color: var(--muted);
       line-height: 1.55;
     }
-    /* Bonus module: dark inverted style to make the +5 bonuses pop */
-    .module--bonus {
+    /* Bonus banner - full-width "value crescendo" below the 5 core modules */
+    .bonus-banner {
       background: var(--bg-dark);
-      border-color: rgba(255,255,255,0.08);
       color: var(--text-on-dark);
+      border-radius: 16px;
+      padding: 28px 28px 26px;
+      margin-top: 20px;
       position: relative;
       overflow: hidden;
     }
-    .module--bonus::before {
+    .bonus-banner::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(239,68,68,0.18), transparent 70%);
+      background:
+        radial-gradient(ellipse 80% 60% at 18% 0%, rgba(239,68,68,0.20), transparent 65%),
+        radial-gradient(ellipse 60% 80% at 100% 100%, rgba(239,68,68,0.10), transparent 70%);
       pointer-events: none;
     }
-    .module--bonus > * { position: relative; z-index: 1; }
-    .module--bonus:hover {
-      border-color: rgba(255,255,255,0.18);
-      box-shadow: 0 18px 38px rgba(11,13,18,0.22);
+    .bonus-banner > * { position: relative; z-index: 1; }
+    .bonus-banner-head {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 10px 16px;
+      margin-bottom: 18px;
     }
-    .module--bonus .module-num { background: #fff; color: var(--bg-dark); }
-    .module--bonus h3 { color: var(--text-on-dark); margin-bottom: 14px; }
-    .module--bonus p { color: var(--muted-on-dark); }
-
-    .bonus-list {
+    .bonus-banner-tag {
+      display: inline-flex; align-items: center;
+      padding: 5px 12px;
+      background: #fff; color: var(--bg-dark);
+      font-size: 11.5px; font-weight: 800;
+      letter-spacing: 0.6px; text-transform: uppercase;
+      border-radius: 999px;
+    }
+    .bonus-banner h3 {
+      font-size: clamp(18px, 2.2vw, 22px);
+      color: var(--text-on-dark);
+      line-height: 1.2; margin: 0;
+    }
+    .bonus-banner-list {
       list-style: none;
-      display: flex; flex-direction: column;
-      gap: 9px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
       margin: 0;
     }
-    .bonus-list li {
+    .bonus-banner-list li {
       display: flex; align-items: flex-start; gap: 10px;
-      font-size: 14px; line-height: 1.4;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 14px 14px;
+      font-size: 13px; line-height: 1.4;
       color: var(--text-on-dark);
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
     }
-    .bonus-list li::before {
+    .bonus-banner-list li:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.16);
+      transform: translateY(-2px);
+    }
+    .bonus-banner-list li::before {
       content: '';
       flex-shrink: 0;
       width: 16px; height: 16px;
-      margin-top: 2px;
+      margin-top: 1px;
       background-color: var(--red);
       -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / contain no-repeat;
               mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / contain no-repeat;
+    }
+    @media (max-width: 900px) {
+      .bonus-banner-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .bonus-banner-list { grid-template-columns: 1fr; gap: 8px; }
+      .bonus-banner { padding: 24px 22px; }
+      .bonus-banner-list li { padding: 12px 14px; }
     }
 
     /* FOUNDER + PORTFOLIO */
@@ -433,6 +475,24 @@
       font-size: 13px; font-weight: 800;
       color: var(--text);
     }
+
+    /* Trustpilot badge */
+    .trustpilot-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 14px;
+    }
+    .tp-stars { display: inline-flex; gap: 2px; }
+    .tp-star {
+      width: 24px; height: 24px;
+      background: #00b67a;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 15px; line-height: 1;
+    }
+    .tp-text {
+      font-weight: 700; color: var(--text);
+      font-size: 14.5px; letter-spacing: -0.2px;
+    }
+    .tp-text .tp-mark { color: #00b67a; }
 
     /* TESTIMONIALS - horizontal carousel */
     .test-carousel { position: relative; }
@@ -675,6 +735,7 @@
       .stat-item .l { font-size: 11.5px; }
       .hero-video { border-radius: 14px; }
       .modules { grid-template-columns: 1fr; gap: 10px; }
+      .modules .module:nth-child(5) { grid-column: auto; }
       .module { padding: 20px 18px; border-radius: 12px; }
       .module-num { margin-bottom: 12px; }
       .module h3 { font-size: 16.5px; }
@@ -723,10 +784,25 @@
     }
     /* Disable hover lifts on touch devices to avoid sticky-hover artifacts */
     @media (hover: none) {
-      .module:hover, .test-card:hover, .portfolio-tile:hover, .module--bonus:hover {
+      .module:hover, .test-card:hover, .portfolio-tile:hover {
         transform: none; box-shadow: none; border-color: var(--border);
       }
-      .module--bonus:hover { border-color: rgba(255,255,255,0.08); box-shadow: none; }
+      .bonus-banner-list li:hover {
+        background: rgba(255,255,255,0.04);
+        border-color: rgba(255,255,255,0.08);
+        transform: none;
+      }
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
@@ -775,10 +851,15 @@
 
       <div class="hero-cta-block">
         <a href="#pricing" class="btn btn-lg">GET INSTANT ACCESS</a>
-        <div class="hero-cta-price">
-          <strong>$6.95 today <s>$497</s></strong>
-          <span>One-time payment &middot; 60-day money-back</span>
-        </div>
+        <p class="hero-cta-price">
+          <strong>$6.95 today</strong>
+          <span class="dot">·</span>
+          <span>was <s>$497</s></span>
+          <span class="dot">·</span>
+          <span>One-time payment</span>
+          <span class="dot">·</span>
+          <span>60-day money-back</span>
+        </p>
       </div>
 
     </div>
@@ -829,17 +910,20 @@
         <h3>VIP Updates + Inside Access</h3>
         <p>Monthly drops of fresh tactics as the algorithm shifts, behind-the-scenes content from pages we're growing right now, and direct email support.</p>
       </div>
-      <div class="module module--bonus">
-        <span class="module-num">+5 Bonuses</span>
+    </div>
+
+    <div class="bonus-banner">
+      <div class="bonus-banner-head">
+        <span class="bonus-banner-tag">+5 Bonuses</span>
         <h3>Plus 5 Bonus Modules Included</h3>
-        <ul class="bonus-list">
-          <li>17 client case studies</li>
-          <li>The EUR 348K case study</li>
-          <li>Personal brand growth playbook</li>
-          <li>Exclusive interviews with 8-figure entrepreneurs</li>
-          <li>The $1M-in-45-days strategy</li>
-        </ul>
       </div>
+      <ul class="bonus-banner-list">
+        <li>17 client case studies</li>
+        <li>The EUR 348K case study</li>
+        <li>Personal brand growth playbook</li>
+        <li>Exclusive interviews with 8-figure entrepreneurs</li>
+        <li>The $1M-in-45-days strategy</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -905,6 +989,16 @@
     <div class="section-head">
       <span class="eyebrow">Real Member Reviews</span>
       <h2>1,900+ Five-Star Trustpilot Reviews</h2>
+      <div class="trustpilot-badge">
+        <span class="tp-stars">
+          <span class="tp-star">★</span>
+          <span class="tp-star">★</span>
+          <span class="tp-star">★</span>
+          <span class="tp-star">★</span>
+          <span class="tp-star">★</span>
+        </span>
+        <span class="tp-text"><span class="tp-mark">★</span> Trustpilot</span>
+      </div>
     </div>
 
     <div class="test-carousel">
@@ -1092,6 +1186,29 @@
       }
     });
   });
+
+  // Scroll-reveal: fade-up elements as they enter the viewport
+  (function() {
+    const targets = document.querySelectorAll(
+      '.section-head, .modules, .bonus-banner, .founder-grid, .test-carousel, .price-card, .faq-block, .stats-strip-inner'
+    );
+    targets.forEach(el => el.classList.add('reveal'));
+
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
+  })();
 
   // Testimonial carousel
   (function() {
