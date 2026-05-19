@@ -338,8 +338,29 @@
       box-shadow: 0 18px 38px rgba(11,13,18,0.22);
     }
     .module--bonus .module-num { background: #fff; color: var(--bg-dark); }
-    .module--bonus h3 { color: var(--text-on-dark); }
+    .module--bonus h3 { color: var(--text-on-dark); margin-bottom: 14px; }
     .module--bonus p { color: var(--muted-on-dark); }
+
+    .bonus-list {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 9px;
+      margin: 0;
+    }
+    .bonus-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; line-height: 1.4;
+      color: var(--text-on-dark);
+    }
+    .bonus-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      margin-top: 2px;
+      background-color: var(--red);
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / contain no-repeat;
+              mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / contain no-repeat;
+    }
 
     /* FOUNDER + PORTFOLIO */
     .founder-grid {
@@ -750,7 +771,13 @@
       <div class="module module--bonus">
         <span class="module-num">+5 Bonuses</span>
         <h3>Plus 5 Bonus Modules Included</h3>
-        <p>17 client case studies, the EUR 348K case study, personal brand growth playbook, exclusive interviews with 8-figure entrepreneurs and the $1M-in-45-days strategy.</p>
+        <ul class="bonus-list">
+          <li>17 client case studies</li>
+          <li>The EUR 348K case study</li>
+          <li>Personal brand growth playbook</li>
+          <li>Exclusive interviews with 8-figure entrepreneurs</li>
+          <li>The $1M-in-45-days strategy</li>
+        </ul>
       </div>
     </div>
   </div>
