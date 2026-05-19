@@ -275,12 +275,12 @@
     .hero-video [id*="vidalytics-watermark"] { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
 
     /* SECTION SHELL */
-    .section { padding: 56px 0; }
+    .section { padding: 48px 0; }
     .section-soft { background: var(--bg-soft); }
     .section-dark { background: var(--bg-dark); color: var(--text-on-dark); }
-    .section-head { text-align: center; margin: 0 auto 32px; max-width: 720px; }
-    .section-head .eyebrow { margin-bottom: 10px; }
-    .section-head h2 { margin-bottom: 10px; }
+    .section-head { text-align: center; margin: 0 auto 28px; max-width: 720px; }
+    .section-head .eyebrow { margin-bottom: 8px; }
+    .section-head h2 { margin-bottom: 8px; }
     .section-lead {
       font-size: 16.5px; color: var(--muted);
       max-width: 600px; margin: 0 auto;
@@ -1011,13 +1011,45 @@
 
     /* Scroll reveal animations */
     .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform;
     }
     .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* Staggered children: cards in a grid fade in sequentially when their
+       parent reveals. Each child waits its index * 80ms before animating. */
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0.00s; }
+    .reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.08s; }
+    .reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.16s; }
+    .reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.24s; }
+    .reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.32s; }
+    .reveal-stagger.in-view > *:nth-child(6) { transition-delay: 0.40s; }
+
+    /* Gentle ambient float on the hero red glow so the page feels alive */
+    @keyframes heroGlowDrift {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      50% { transform: translate(2%, -1%) scale(1.05); opacity: 0.85; }
+    }
+    .hero::before { animation: heroGlowDrift 14s ease-in-out infinite; }
+
+    /* Subtle pulse on the primary CTA so it draws the eye every few seconds */
+    @keyframes btnPulse {
+      0%, 100% { box-shadow: 0 8px 24px rgba(239,68,68,0.32); }
+      50% { box-shadow: 0 8px 24px rgba(239,68,68,0.32), 0 0 0 6px rgba(239,68,68,0.10); }
+    }
+    .btn-lg { animation: btnPulse 3.2s ease-in-out infinite; }
+    .btn-lg:hover, .btn-lg:active { animation: none; }
+
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+      .hero::before, .btn-lg { animation: none; }
     }
   </style>
 </head>
@@ -1086,15 +1118,15 @@
   <div class="container stats-strip-inner">
     <div class="stat-item">
       <span class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
-      <span class="n">20+</span><span class="l">Theme Pages</span>
+      <span class="n" data-count="20" data-suffix="+">20+</span><span class="l">Theme Pages</span>
     </div>
     <div class="stat-item">
       <span class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="7" r="2.5"/><path d="M15 21c0-2.5 2-4.5 5-4.5"/></svg></span>
-      <span class="n">17M+</span><span class="l">Followers</span>
+      <span class="n" data-count="17" data-suffix="M+">17M+</span><span class="l">Followers</span>
     </div>
     <div class="stat-item">
       <span class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
-      <span class="n">1B+</span><span class="l">Monthly Views</span>
+      <span class="n" data-count="1" data-suffix="B+">1B+</span><span class="l">Monthly Views</span>
     </div>
   </div>
 </div>
@@ -1231,15 +1263,15 @@
 
         <div class="founder-stats-inline">
           <div class="fs">
-            <span class="n">20+</span>
+            <span class="n" data-count="20" data-suffix="+">20+</span>
             <span class="l">Theme Pages</span>
           </div>
           <div class="fs">
-            <span class="n">17M+</span>
+            <span class="n" data-count="17" data-suffix="M+">17M+</span>
             <span class="l">Combined Followers</span>
           </div>
           <div class="fs">
-            <span class="n">1B+</span>
+            <span class="n" data-count="1" data-suffix="B+">1B+</span>
             <span class="l">Monthly Views</span>
           </div>
           <div class="fs">
@@ -1260,7 +1292,7 @@
           </div>
           <div class="pc-stat-block">
             <div class="pc-divider"></div>
-            <span class="pc-num">4.5<span class="pc-num-suffix">M</span></span>
+            <span class="pc-num" data-count="4.5" data-suffix="M">4.5M</span>
             <span class="pc-label">Followers</span>
           </div>
         </a>
@@ -1274,7 +1306,7 @@
           </div>
           <div class="pc-stat-block">
             <div class="pc-divider"></div>
-            <span class="pc-num">5.6<span class="pc-num-suffix">M</span></span>
+            <span class="pc-num" data-count="5.6" data-suffix="M">5.6M</span>
             <span class="pc-label">Followers</span>
           </div>
         </a>
@@ -1288,7 +1320,7 @@
           </div>
           <div class="pc-stat-block">
             <div class="pc-divider"></div>
-            <span class="pc-num">3<span class="pc-num-suffix">M</span></span>
+            <span class="pc-num" data-count="3" data-suffix="M">3M</span>
             <span class="pc-label">Followers</span>
           </div>
         </a>
@@ -1302,7 +1334,7 @@
           </div>
           <div class="pc-stat-block">
             <div class="pc-divider"></div>
-            <span class="pc-num">2<span class="pc-num-suffix">M</span></span>
+            <span class="pc-num" data-count="2" data-suffix="M">2M</span>
             <span class="pc-label">Followers</span>
           </div>
         </a>
@@ -1596,13 +1628,22 @@
 
   // Scroll-reveal: fade-up elements as they enter the viewport
   (function() {
-    const targets = document.querySelectorAll(
-      '.section-head, .how-steps, .modules, .bonus-banner, .founder-grid, .stories, .test-carousel, .price-card, .faq-block, .stats-strip-inner'
+    // Containers whose children should stagger in (cards in a grid)
+    const staggerTargets = document.querySelectorAll(
+      '.how-steps, .modules, .stories, .portfolio, .stats-strip-inner'
     );
-    targets.forEach(el => el.classList.add('reveal'));
+    staggerTargets.forEach(el => el.classList.add('reveal-stagger'));
+
+    // Single-block elements that just fade up
+    const blockTargets = document.querySelectorAll(
+      '.section-head, .bonus-banner, .founder-grid, .test-carousel, .price-card, .faq-block'
+    );
+    blockTargets.forEach(el => el.classList.add('reveal'));
+
+    const allTargets = [...staggerTargets, ...blockTargets];
 
     if (!('IntersectionObserver' in window)) {
-      targets.forEach(el => el.classList.add('in-view'));
+      allTargets.forEach(el => el.classList.add('in-view'));
       return;
     }
     const observer = new IntersectionObserver((entries) => {
@@ -1612,9 +1653,45 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
 
-    targets.forEach(el => observer.observe(el));
+    allTargets.forEach(el => observer.observe(el));
+  })();
+
+  // Animated count-up on stat numbers when they enter the viewport
+  (function() {
+    const stats = document.querySelectorAll('[data-count]');
+    if (!stats.length || !('IntersectionObserver' in window)) return;
+
+    function animate(el) {
+      const target = parseFloat(el.getAttribute('data-count'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const decimals = (target % 1 === 0) ? 0 : 1;
+      const duration = 1400;
+      const startTs = performance.now();
+
+      function frame(now) {
+        const t = Math.min(1, (now - startTs) / duration);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - t, 3);
+        const value = target * eased;
+        el.textContent = value.toFixed(decimals) + suffix;
+        if (t < 1) requestAnimationFrame(frame);
+        else el.textContent = (decimals === 0 ? Math.round(target) : target.toFixed(decimals)) + suffix;
+      }
+      requestAnimationFrame(frame);
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    stats.forEach(el => obs.observe(el));
   })();
 
   // Testimonial carousel
