@@ -506,6 +506,17 @@
       transition: background 0.15s, width 0.15s;
     }
     .test-dot.active { background: var(--red); width: 22px; }
+
+    .test-more {
+      text-align: center; margin-top: 18px;
+      font-size: 13.5px;
+    }
+    .test-more a {
+      color: var(--red); font-weight: 700;
+      text-decoration: none; letter-spacing: 0.2px;
+      transition: color 0.15s;
+    }
+    .test-more a:hover { color: var(--red-dark); text-decoration: underline; }
     .test-stars {
       color: #fbbf24; letter-spacing: 2px; font-size: 14px;
     }
@@ -996,6 +1007,9 @@
         </button>
       </div>
       <div class="test-dots" role="tablist" aria-label="Testimonial pagination"></div>
+      <p class="test-more">
+        <a href="https://www.trustpilot.com/review/niklaspedde.de" target="_blank" rel="noopener">Read more reviews on Trustpilot &rsaquo;</a>
+      </p>
     </div>
   </div>
 </section>
