@@ -553,94 +553,70 @@
       .pc-logo { width: 44px; height: 44px; }
     }
 
-    /* CLIENT STORIES */
+    /* CLIENT STORIES - dark testimonial cards with circular portrait + quote */
     .stories {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
     }
     .story-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.04), transparent 65%),
+        linear-gradient(160deg, #14171f 0%, #0a0c12 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 22px 22px 20px;
       display: flex; flex-direction: column;
-      transition: border-color 0.2s;
+      gap: 16px;
+      color: var(--text-on-dark);
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .story-card:hover { border-color: #cbd5e1; }
-    .story-img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
+    .story-card:hover { border-color: rgba(255,255,255,0.16); transform: translateY(-2px); }
+    .story-head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .story-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
       overflow: hidden;
-      background: #0a0a0a;
+      background: #000;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.12);
     }
-    .story-img img {
+    .story-avatar img {
       width: 100%; height: 100%;
       object-fit: cover;
       object-position: center top;
       display: block;
     }
-    .story-body {
-      padding: 22px 22px 22px;
-      display: flex; flex-direction: column;
-      gap: 14px;
-    }
-    .story-result {
-      display: flex; flex-direction: column;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-    }
-    .story-num {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(26px, 3vw, 32px);
-      font-weight: 900;
-      color: var(--red);
-      line-height: 1;
-      letter-spacing: -0.8px;
-      display: inline-flex; align-items: baseline; gap: 6px;
-      flex-wrap: wrap;
-    }
-    .story-num-suffix {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 600; font-style: normal;
-      color: var(--text);
-      letter-spacing: 0;
-    }
-    .story-num-label {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-top: 8px;
-    }
-    .story-meta {
-      display: flex; flex-direction: column; gap: 2px;
-    }
+    .story-id { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
     .story-name {
-      font-size: 15.5px; font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.2px;
+      font-size: 17px; font-weight: 800;
+      color: var(--red);
+      letter-spacing: -0.3px;
+      line-height: 1.15;
     }
-    .story-handle {
+    .story-role {
       font-size: 12.5px;
-      color: var(--muted);
-      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.1px;
     }
-    .story-desc {
-      font-size: 14px;
-      line-height: 1.55;
-      color: #374151;
+    .story-quote {
+      font-size: 14px; line-height: 1.6;
+      color: rgba(255,255,255,0.82);
       margin: 0;
     }
-    @media (max-width: 900px) {
-      .stories { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .story-quote strong {
+      color: var(--text-on-dark); font-weight: 700;
     }
-    @media (max-width: 600px) {
-      .stories { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 12px; }
-      .story-body { padding: 20px 20px 20px; }
+    @media (max-width: 700px) {
+      .stories { grid-template-columns: 1fr; gap: 10px; max-width: 540px; margin: 0 auto; }
+      .story-card { padding: 20px 20px 18px; gap: 14px; }
+      .story-head { gap: 12px; }
+      .story-avatar { width: 56px; height: 56px; }
+      .story-name { font-size: 16px; }
+      .story-role { font-size: 12px; }
+      .story-quote { font-size: 14px; }
     }
 
     /* Trustpilot badge */
@@ -1201,105 +1177,69 @@
 
     <div class="stories">
       <div class="story-card">
-        <div class="story-img">
-          <img src="clients/richard.jpg" alt="Richard Ehrengruber" width="800" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="story-body">
-          <div class="story-result">
-            <span class="story-num">$20K <span class="story-num-suffix">first month</span></span>
-            <span class="story-num-label">4,500 followers · Month 1</span>
-          </div>
-          <div class="story-meta">
+        <div class="story-head">
+          <div class="story-avatar"><img src="clients/richard.jpg" alt="Richard Ehrengruber" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-id">
             <span class="story-name">Richard Ehrengruber</span>
-            <span class="story-handle">Multiple theme pages</span>
+            <span class="story-role">Multiple theme pages</span>
           </div>
-          <p class="story-desc">No offer, no positioning, no monetisation strategy. Made $20k and gained 4,500+ followers in his very first month after setting up the system.</p>
         </div>
+        <p class="story-quote">"Walked in with no offer, no positioning, and no clue how to monetise. After setting up the system, <strong>made $20k and gained 4,500+ followers in my first month.</strong>"</p>
       </div>
 
       <div class="story-card">
-        <div class="story-img">
-          <img src="clients/roland.jpg" alt="Roland @wave4wealth Instagram profile" width="800" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="story-body">
-          <div class="story-result">
-            <span class="story-num">$10K <span class="story-num-suffix">first sales</span></span>
-            <span class="story-num-label">From zero · Faceless</span>
-          </div>
-          <div class="story-meta">
+        <div class="story-head">
+          <div class="story-avatar"><img src="clients/roland.jpg" alt="Roland @wave4wealth" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-id">
             <span class="story-name">Roland</span>
-            <span class="story-handle">@wave4wealth</span>
+            <span class="story-role">@wave4wealth</span>
           </div>
-          <p class="story-desc">No business plan, no product, didn't want to show his face. Built a faceless theme page from scratch and made his first $10k in sales.</p>
         </div>
+        <p class="story-quote">"Didn't want to show my face, didn't have a product, didn't have a plan. Built a faceless page from scratch and <strong>made my first $10k in sales without ever appearing on camera.</strong>"</p>
       </div>
 
       <div class="story-card">
-        <div class="story-img">
-          <img src="clients/melory.jpg" alt="Melory @bossbabemaverick Instagram profile" width="800" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="story-body">
-          <div class="story-result">
-            <span class="story-num">$15K <span class="story-num-suffix">in 6 weeks</span></span>
-            <span class="story-num-label">Faceless · No mentor before</span>
-          </div>
-          <div class="story-meta">
+        <div class="story-head">
+          <div class="story-avatar"><img src="clients/melory.jpg" alt="Melory @bossbabemaverick" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-id">
             <span class="story-name">Melory</span>
-            <span class="story-handle">@bossbabemaverick</span>
+            <span class="story-role">@bossbabemaverick</span>
           </div>
-          <p class="story-desc">Struggled to make money online with no mentor and no clear direction. Built a faceless page and earned $15k in just 6 weeks.</p>
         </div>
+        <p class="story-quote">"Tried to make money online for years with no mentor and no direction. Built a faceless page with the playbook and <strong>brought in $15k in just 6 weeks.</strong>"</p>
       </div>
 
       <div class="story-card">
-        <div class="story-img">
-          <img src="clients/michelle.png" alt="Michelle Nolting" width="800" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="story-body">
-          <div class="story-result">
-            <span class="story-num">$12K <span class="story-num-suffix">in 11 days</span></span>
-            <span class="story-num-label">From no income</span>
-          </div>
-          <div class="story-meta">
+        <div class="story-head">
+          <div class="story-avatar"><img src="clients/michelle.png" alt="Michelle Nolting" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-id">
             <span class="story-name">Michelle Nolting</span>
-            <span class="story-handle">@successfulmotion</span>
+            <span class="story-role">@successfulmotion</span>
           </div>
-          <p class="story-desc">Couldn't get traction online, no mentor, wanted a faceless setup. Followed the playbook and pulled in $12k inside 11 days.</p>
         </div>
+        <p class="story-quote">"Couldn't get traction online and had no one to guide me. Followed the playbook step by step and <strong>pulled in $12k inside 11 days.</strong>"</p>
       </div>
 
       <div class="story-card">
-        <div class="story-img">
-          <img src="clients/taha.jpg" alt="Taha testimonial" width="800" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="story-body">
-          <div class="story-result">
-            <span class="story-num">$20K <span class="story-num-suffix">record month</span></span>
-            <span class="story-num-label">Expected $2K · Anonymous</span>
-          </div>
-          <div class="story-meta">
+        <div class="story-head">
+          <div class="story-avatar"><img src="clients/taha.jpg" alt="Taha @taha.hustles" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-id">
             <span class="story-name">Taha</span>
-            <span class="story-handle">@taha.hustles</span>
+            <span class="story-role">@taha.hustles</span>
           </div>
-          <p class="story-desc">Started fully anonymous with no system and no brand identity. Was hoping for $2k a month. Hit a $20k record month instead.</p>
         </div>
+        <p class="story-quote">"Started completely anonymous with no system and no brand. I was hoping for $2k a month. <strong>Hit a $20k record month instead.</strong>"</p>
       </div>
 
       <div class="story-card">
-        <div class="story-img">
-          <img src="clients/pritash.png" alt="Pritash" width="800" height="600" loading="lazy" decoding="async">
-        </div>
-        <div class="story-body">
-          <div class="story-result">
-            <span class="story-num">First $997 <span class="story-num-suffix">DM sale</span></span>
-            <span class="story-num-label">First offer launched</span>
-          </div>
-          <div class="story-meta">
+        <div class="story-head">
+          <div class="story-avatar"><img src="clients/pritash.png" alt="Pritash" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-id">
             <span class="story-name">Pritash</span>
-            <span class="story-handle">Theme page owner</span>
+            <span class="story-role">Theme page owner</span>
           </div>
-          <p class="story-desc">Had a page but no offer, no funnel, no monetisation. Launched his first offer using the system and closed his first $997 DM sale.</p>
         </div>
+        <p class="story-quote">"Had a page but no offer, no funnel, nothing monetised. Launched my first offer using the system and <strong>closed my first $997 DM sale.</strong>"</p>
       </div>
     </div>
   </div>
