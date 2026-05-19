@@ -446,77 +446,111 @@
       margin-top: 6px;
     }
 
-    /* PORTFOLIO - dark stat cards inspired by phoenix-media.ae */
+    /* PORTFOLIO - Instagram-profile style cards on dark */
     .portfolio {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 12px;
+      gap: 16px;
+      margin-top: 16px;
       width: 100%;
     }
     .portfolio-card {
       position: relative;
-      background: linear-gradient(160deg, #14171f 0%, #0a0c12 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 18px 18px 22px;
+      aspect-ratio: 4 / 5;
+      background:
+        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255,255,255,0.06), transparent 65%),
+        linear-gradient(160deg, #181d28 0%, #0a0c12 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 22px 20px 22px;
       overflow: hidden;
       color: var(--text-on-dark);
-      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .portfolio-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.14); }
+    .portfolio-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 36px rgba(11,13,18,0.4);
+    }
     .portfolio-card::after {
       content: ''; position: absolute;
-      right: -40px; bottom: -40px;
-      width: 160px; height: 160px;
+      right: -50px; bottom: -50px;
+      width: 200px; height: 200px;
       background: radial-gradient(circle, rgba(239,68,68,0.18), transparent 65%);
       pointer-events: none;
     }
     .portfolio-card > * { position: relative; z-index: 1; }
+
     .pc-head {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 32px;
+      display: flex; align-items: center; gap: 12px;
     }
     .pc-logo {
-      width: 36px; height: 36px;
-      border-radius: 8px;
+      width: 52px; height: 52px;
+      border-radius: 50%;
       background: #000;
       flex-shrink: 0;
       overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,0.14);
       display: flex; align-items: center; justify-content: center;
     }
     .pc-logo img { width: 86%; height: 86%; object-fit: contain; }
+    .pc-handle-block { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
     .pc-handle {
-      font-size: 13px; font-weight: 700;
+      font-size: 14.5px; font-weight: 800;
       color: var(--text-on-dark);
       letter-spacing: -0.2px;
       line-height: 1.2;
-      word-break: break-word;
+      display: inline-flex; align-items: center; gap: 4px;
     }
-    .pc-stat {
+    .pc-verified {
+      display: inline-flex; flex-shrink: 0;
+      width: 13px; height: 13px;
+      background-color: #3b82f6;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M12 2l2.39 2.45 3.41-.34.94 3.3 3.26 1.06-1.06 3.26 1.06 3.26-3.26 1.06-.94 3.3-3.41-.34L12 22l-2.39-2.45-3.41.34-.94-3.3L1.99 15.27 3.06 12 1.99 8.73l3.27-1.06.94-3.3 3.41.34L12 2zM10.5 15.5l6.5-6.5-1.41-1.41L10.5 12.67 7.91 10.09 6.5 11.5l4 4z'/></svg>") center / contain no-repeat;
+              mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M12 2l2.39 2.45 3.41-.34.94 3.3 3.26 1.06-1.06 3.26 1.06 3.26-3.26 1.06-.94 3.3-3.41-.34L12 22l-2.39-2.45-3.41.34-.94-3.3L1.99 15.27 3.06 12 1.99 8.73l3.27-1.06.94-3.3 3.41.34L12 2zM10.5 15.5l6.5-6.5-1.41-1.41L10.5 12.67 7.91 10.09 6.5 11.5l4 4z'/></svg>") center / contain no-repeat;
+    }
+    .pc-niche {
+      font-size: 11.5px; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.2px;
+      margin-top: 3px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .pc-stat-block {
       display: flex; flex-direction: column;
-      line-height: 1;
+    }
+    .pc-divider {
+      width: 32px; height: 2px;
+      background: var(--red);
+      margin-bottom: 14px;
+      border-radius: 2px;
     }
     .pc-num {
-      font-size: clamp(34px, 4vw, 44px);
+      font-size: clamp(36px, 4.4vw, 48px);
       font-weight: 900;
       color: var(--text-on-dark);
-      letter-spacing: -1.2px;
+      letter-spacing: -1.8px;
       line-height: 1;
     }
-    .pc-num-suffix { font-weight: 700; }
+    .pc-num-suffix { font-weight: 800; }
     .pc-label {
-      font-size: 11px; font-weight: 600;
-      color: var(--muted-on-dark);
-      text-transform: uppercase; letter-spacing: 1.4px;
+      font-size: 10.5px; font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase; letter-spacing: 1.8px;
       margin-top: 10px;
     }
     @media (max-width: 900px) {
       .portfolio { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .portfolio-card { aspect-ratio: auto; padding: 22px 20px; }
+      .pc-head { margin-bottom: 28px; }
     }
     @media (max-width: 460px) {
       .portfolio { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
       .pc-head { margin-bottom: 24px; }
+      .pc-logo { width: 44px; height: 44px; }
     }
 
     /* CLIENT STORIES */
@@ -1095,46 +1129,62 @@
       </div>
 
       <div class="portfolio">
-        <div class="portfolio-card">
+        <a class="portfolio-card" href="https://www.instagram.com/ironwiill/" target="_blank" rel="noopener">
           <div class="pc-head">
-            <span class="pc-logo"><img src="logos/ironwiill.jpg" alt="Ironwiill" width="480" height="480" loading="lazy" decoding="async"></span>
-            <span class="pc-handle">@ironwiill</span>
+            <span class="pc-logo"><img src="logos/ironwiill.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
+            <div class="pc-handle-block">
+              <span class="pc-handle">@ironwiill<span class="pc-verified" aria-label="Verified"></span></span>
+              <span class="pc-niche">Mindset · Motivation</span>
+            </div>
           </div>
-          <div class="pc-stat">
+          <div class="pc-stat-block">
+            <div class="pc-divider"></div>
             <span class="pc-num">4.5<span class="pc-num-suffix">M</span></span>
             <span class="pc-label">Followers</span>
           </div>
-        </div>
-        <div class="portfolio-card">
+        </a>
+        <a class="portfolio-card" href="https://www.instagram.com/valorgi/" target="_blank" rel="noopener">
           <div class="pc-head">
-            <span class="pc-logo"><img src="logos/valorgi.jpg" alt="Valorgi" width="320" height="320" loading="lazy" decoding="async"></span>
-            <span class="pc-handle">@valorgi</span>
+            <span class="pc-logo"><img src="logos/valorgi.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
+            <div class="pc-handle-block">
+              <span class="pc-handle">@valorgi<span class="pc-verified" aria-label="Verified"></span></span>
+              <span class="pc-niche">Business · Mindset</span>
+            </div>
           </div>
-          <div class="pc-stat">
+          <div class="pc-stat-block">
+            <div class="pc-divider"></div>
             <span class="pc-num">5.6<span class="pc-num-suffix">M</span></span>
             <span class="pc-label">Followers</span>
           </div>
-        </div>
-        <div class="portfolio-card">
+        </a>
+        <a class="portfolio-card" href="https://www.instagram.com/biz_thoughts/" target="_blank" rel="noopener">
           <div class="pc-head">
-            <span class="pc-logo"><img src="logos/biz-thoughts.jpg" alt="Biz_thoughts" width="480" height="480" loading="lazy" decoding="async"></span>
-            <span class="pc-handle">@biz_thoughts</span>
+            <span class="pc-logo"><img src="logos/biz-thoughts.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
+            <div class="pc-handle-block">
+              <span class="pc-handle">@biz_thoughts<span class="pc-verified" aria-label="Verified"></span></span>
+              <span class="pc-niche">Business · Finance</span>
+            </div>
           </div>
-          <div class="pc-stat">
+          <div class="pc-stat-block">
+            <div class="pc-divider"></div>
             <span class="pc-num">3<span class="pc-num-suffix">M</span></span>
             <span class="pc-label">Followers</span>
           </div>
-        </div>
-        <div class="portfolio-card">
+        </a>
+        <a class="portfolio-card" href="https://www.instagram.com/money.focus/" target="_blank" rel="noopener">
           <div class="pc-head">
-            <span class="pc-logo"><img src="logos/money-focus.jpg" alt="Money.focus" width="480" height="480" loading="lazy" decoding="async"></span>
-            <span class="pc-handle">@money.focus</span>
+            <span class="pc-logo"><img src="logos/money-focus.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
+            <div class="pc-handle-block">
+              <span class="pc-handle">@money.focus<span class="pc-verified" aria-label="Verified"></span></span>
+              <span class="pc-niche">Finance · Wealth</span>
+            </div>
           </div>
-          <div class="pc-stat">
+          <div class="pc-stat-block">
+            <div class="pc-divider"></div>
             <span class="pc-num">2<span class="pc-num-suffix">M</span></span>
             <span class="pc-label">Followers</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
