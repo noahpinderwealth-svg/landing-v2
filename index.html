@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fast.vidalytics.com" crossorigin>
   <link rel="dns-prefetch" href="https://fast.vidalytics.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -89,23 +89,10 @@
     .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
     .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-    /* Elegant serif display for headlines, Inter for body */
-    h1, h2 {
-      font-family: 'Fraunces', 'Times New Roman', serif;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 1.08;
-      font-variation-settings: "opsz" 96;
-    }
-    h3, h4 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-    h1 { font-size: clamp(34px, 5.4vw, 56px); font-weight: 400; }
-    h2 { font-size: clamp(28px, 3.8vw, 42px); font-weight: 400; }
-    h3 { font-size: clamp(18px, 2vw, 22px); }
+    h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    h1 { font-size: clamp(32px, 4.8vw, 52px); font-weight: 900; line-height: 1.08; }
+    h2 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; }
+    h3 { font-size: clamp(19px, 2.2vw, 24px); }
     p { color: #374151; }
 
     .eyebrow {
@@ -120,17 +107,16 @@
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       background: var(--red); color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 14.5px; font-weight: 700;
-      padding: 16px 32px; border-radius: 999px;
+      font-size: 16px; font-weight: 800;
+      padding: 16px 28px; border-radius: 999px;
       border: none; cursor: pointer;
-      letter-spacing: 0.6px; text-transform: uppercase;
-      box-shadow: 0 6px 18px rgba(239,68,68,0.20);
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 24px rgba(239,68,68,0.32);
       transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
-    .btn:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 10px 22px rgba(239,68,68,0.28); }
-    .btn:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(239,68,68,0.2); }
-    .btn-lg { font-size: 15px; padding: 18px 40px; letter-spacing: 0.8px; }
+    .btn:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(239,68,68,0.42); }
+    .btn:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(239,68,68,0.3); }
+    .btn-lg { font-size: 17px; padding: 18px 34px; }
     .btn-full { width: 100%; }
 
     /* HEADER */
@@ -169,14 +155,14 @@
       position: relative;
       background: var(--bg-dark);
       color: var(--text-on-dark);
-      padding: 60px 0 88px;
+      padding: 40px 0 56px;
       overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 50% -10%, rgba(255,255,255,0.06), transparent 60%),
-        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(239,68,68,0.05), transparent 70%);
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(239,68,68,0.20), transparent 70%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(239,68,68,0.08), transparent 70%);
       pointer-events: none;
     }
     .hero .container { position: relative; }
@@ -192,35 +178,28 @@
 
     .hero-trust {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11.5px; font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.14);
-      padding: 6px 14px; border-radius: 999px;
-      letter-spacing: 0.4px;
+      font-size: 12px; font-weight: 600;
+      color: var(--muted-on-dark);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 12px; border-radius: 999px;
     }
-    .hero-trust .stars { color: #fbbf24; letter-spacing: 1.5px; font-size: 10.5px; }
+    .hero-trust .stars { color: #fbbf24; letter-spacing: 1px; }
 
     .hero h1 {
       color: var(--text-on-dark);
       margin: 0;
-      max-width: 820px;
-      font-size: clamp(32px, 5vw, 54px);
-      line-height: 1.08;
-      font-weight: 400;
+      max-width: 780px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
     }
-    .hero h1 .accent {
-      color: var(--text-on-dark);
-      font-style: italic;
-      font-variation-settings: "opsz" 144;
-    }
+    .hero h1 .accent { color: var(--red); }
 
     .hero-sub {
-      font-size: 16.5px; line-height: 1.55;
+      font-size: 16px; line-height: 1.5;
       color: var(--muted-on-dark);
       margin: 0;
-      max-width: 560px;
-      font-weight: 400;
+      max-width: 580px;
     }
 
     /* CTA group sits BELOW the video as the next action after watching.
@@ -253,7 +232,7 @@
       background: var(--bg-dark);
       color: var(--text-on-dark);
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 22px 0;
+      padding: 18px 0;
     }
     .stats-strip-inner {
       display: flex; align-items: center; justify-content: center;
@@ -290,12 +269,12 @@
     .hero-video [id*="vidalytics-watermark"] { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
 
     /* SECTION SHELL */
-    .section { padding: 96px 0; }
+    .section { padding: 56px 0; }
     .section-soft { background: var(--bg-soft); }
     .section-dark { background: var(--bg-dark); color: var(--text-on-dark); }
-    .section-head { text-align: center; margin: 0 auto 48px; max-width: 720px; }
-    .section-head .eyebrow { margin-bottom: 14px; }
-    .section-head h2 { margin-bottom: 14px; }
+    .section-head { text-align: center; margin: 0 auto 32px; max-width: 720px; }
+    .section-head .eyebrow { margin-bottom: 10px; }
+    .section-head h2 { margin-bottom: 10px; }
     .section-lead {
       font-size: 16.5px; color: var(--muted);
       max-width: 600px; margin: 0 auto;
@@ -324,20 +303,21 @@
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 28px 24px 24px;
-      transition: border-color 0.2s;
+      padding: 24px 20px 22px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
-    .module:hover { border-color: #cbd5e1; }
+    .module:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(11,13,18,0.07);
+      border-color: #d1d5db;
+    }
     .module-num {
       display: inline-flex; align-items: center; justify-content: center;
-      min-width: 28px; height: 28px; padding: 0 8px;
-      background: transparent; color: var(--red);
-      font-family: 'Fraunces', serif;
-      font-size: 15px; font-weight: 500;
-      font-style: italic;
-      border-radius: 0;
-      margin-bottom: 14px;
-      letter-spacing: 0;
+      min-width: 30px; height: 30px; padding: 0 8px;
+      background: var(--red); color: #fff;
+      font-size: 12px; font-weight: 800;
+      border-radius: 999px;
+      margin-bottom: 16px;
     }
     .module h3 {
       font-size: 17px; font-weight: 800;
@@ -360,7 +340,9 @@
     }
     .bonus-banner::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 20% 0%, rgba(255,255,255,0.05), transparent 60%);
+      background:
+        radial-gradient(ellipse 80% 60% at 18% 0%, rgba(239,68,68,0.20), transparent 65%),
+        radial-gradient(ellipse 60% 80% at 100% 100%, rgba(239,68,68,0.10), transparent 70%);
       pointer-events: none;
     }
     .bonus-banner > * { position: relative; z-index: 1; }
@@ -474,9 +456,13 @@
       border-radius: 14px;
       padding: 14px 12px;
       display: flex; flex-direction: column; align-items: center; gap: 12px;
-      transition: border-color 0.2s;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
-    .portfolio-tile:hover { border-color: #cbd5e1; }
+    .portfolio-tile:hover {
+      transform: translateY(-2px);
+      border-color: #d1d5db;
+      box-shadow: 0 8px 20px rgba(11,13,18,0.06);
+    }
     .portfolio-tile .logo-frame {
       width: 100%; aspect-ratio: 1/1;
       border-radius: 10px;
@@ -512,14 +498,12 @@
       border-bottom: 1px solid var(--border);
     }
     .story-num {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(28px, 3vw, 34px);
-      font-weight: 400;
-      font-variation-settings: "opsz" 144;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(26px, 3vw, 32px);
+      font-weight: 900;
       color: var(--red);
       line-height: 1;
-      letter-spacing: -0.02em;
-      font-style: italic;
+      letter-spacing: -0.8px;
       display: inline-flex; align-items: baseline; gap: 6px;
       flex-wrap: wrap;
     }
@@ -613,11 +597,15 @@
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 28px 24px 22px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: border-color 0.2s;
+      padding: 24px 20px 20px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
-    .test-card:hover { border-color: #cbd5e1; }
+    .test-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(11,13,18,0.06);
+      border-color: #d1d5db;
+    }
 
     /* Carousel controls */
     .test-arrow {
@@ -711,7 +699,7 @@
     }
     .price-card::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,255,255,0.07), transparent 65%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(239,68,68,0.25), transparent 70%);
       pointer-events: none;
     }
     .price-card > * { position: relative; z-index: 1; }
@@ -808,67 +796,63 @@
 
     /* MOBILE TWEAKS */
     @media (max-width: 760px) {
-      .section { padding: 64px 0; }
-      .hero { padding: 36px 0 56px; }
-      .hero-grid { gap: 26px; }
-      .hero-intro { gap: 14px; }
-      .hero-trust { font-size: 11px; padding: 5px 12px; }
-      .hero h1 { font-size: clamp(28px, 6.5vw, 38px); }
+      .section { padding: 44px 0; }
+      .hero { padding: 24px 0 32px; }
+      .hero-grid { gap: 22px; }
+      .hero-intro { gap: 12px; }
+      .hero-trust { font-size: 11.5px; padding: 5px 11px; }
       .hero-sub { font-size: 15.5px; }
-      .hero-cta-price { font-size: 12px; column-gap: 6px; }
-      .hero-cta-price strong { font-size: 13px; }
-      .hero-cta-price s { font-size: 12px; }
-      .stats-strip { padding: 18px 0; }
+      .hero-cta-block { column-gap: 16px; row-gap: 12px; }
+      .stats-strip { padding: 16px 0; }
       .stats-strip-inner { gap: 16px 28px; }
       .stat-item .n { font-size: 19px; }
       .stat-item .l { font-size: 11.5px; }
       .hero-video { border-radius: 14px; }
       .modules { grid-template-columns: 1fr; gap: 10px; }
       .modules .module:nth-child(5) { grid-column: auto; }
-      .module { padding: 24px 20px; border-radius: 12px; }
-      .module h3 { font-size: 17px; }
-      .module p { font-size: 14.5px; }
-      .bonus-banner { padding: 24px 22px 22px; }
-      .bonus-banner h3 { font-size: 17px; }
-      .founder-grid { gap: 32px; }
+      .module { padding: 20px 18px; border-radius: 12px; }
+      .module-num { margin-bottom: 12px; }
+      .module h3 { font-size: 16.5px; }
+      .module p { font-size: 14px; }
+      .founder-grid { gap: 28px; }
       .founder-quote { font-size: 16px; line-height: 1.65; }
       .founder-stats-inline { gap: 14px 24px; margin-top: 18px; padding-top: 16px; }
       .fs .n { font-size: 22px; }
       .portfolio { gap: 10px; }
       .portfolio-tile { padding: 12px 10px; gap: 10px; border-radius: 12px; }
-      .test-card { padding: 24px 20px 20px; border-radius: 12px; }
-      .test-text { font-size: 14.5px; }
-      .price-card { padding: 32px 22px; border-radius: 18px; }
+      .test-card { padding: 22px 18px 18px; border-radius: 12px; }
+      .test-text { font-size: 14px; }
+      .price-card { padding: 28px 22px; border-radius: 18px; }
       .price-amount { font-size: 56px; letter-spacing: -2px; }
       .price-amount sup, .price-amount .dec { font-size: 26px; }
       .price-was { font-size: 13px; }
       .price-note { font-size: 13px; margin-bottom: 16px; }
       .price-guarantee { font-size: 12px; }
-      .faq-block h3 { font-size: 19px; margin-bottom: 12px; }
-      .faq-q { padding: 16px 0; font-size: 15px; }
-      .faq-a { font-size: 14px; padding-bottom: 16px; }
-      .section-head { margin-bottom: 36px; }
+      .faq-block h3 { font-size: 19px; margin-bottom: 10px; }
+      .faq-q { padding: 14px 0; font-size: 15px; }
+      .faq-a { font-size: 14px; padding-bottom: 14px; }
+      .section-head { margin-bottom: 28px; }
       .site-header .container { padding-top: 14px; padding-bottom: 14px; }
       .brand img { height: 24px; }
       .brand-name { font-size: 15px; }
-      .header-cta { font-size: 12px; padding: 7px 12px; }
+      .header-cta { font-size: 12.5px; padding: 7px 12px; }
       .container, .container-narrow { padding: 0 20px; }
-      .btn { padding: 14px 26px; font-size: 13.5px; }
-      .btn-lg { padding: 16px 30px; font-size: 14.5px; }
-      .footer { padding: 28px 0 24px; }
+      .btn { padding: 14px 24px; font-size: 15px; }
+      .btn-lg { padding: 16px 28px; font-size: 16px; }
+      .footer { padding: 26px 0 22px; }
     }
     @media (max-width: 420px) {
-      .section { padding: 56px 0; }
-      .hero { padding: 28px 0 44px; }
-      .hero h1 { font-size: clamp(25px, 7.5vw, 32px); }
-      .hero-sub { font-size: 15px; max-width: 100%; }
+      .section { padding: 36px 0; }
+      .hero { padding: 20px 0 26px; }
+      .hero h1 { font-size: clamp(23px, 7vw, 28px); }
+      .hero-sub { font-size: 15px; }
       .stats-strip-inner { gap: 12px 22px; }
       .stat-item .n { font-size: 17px; }
       .stat-item .l { font-size: 11px; }
-      .price-amount { font-size: 52px; }
-      .price-amount sup, .price-amount .dec { font-size: 24px; }
-      .module { padding: 22px 18px; }
-      .test-card { padding: 22px 18px 18px; }
+      .price-amount { font-size: 50px; }
+      .price-amount sup, .price-amount .dec { font-size: 22px; }
+      .module { padding: 18px 16px; }
+      .test-card { padding: 20px 16px 16px; }
       .footer-disclaimer { font-size: 11px; }
       .footer-copyright { font-size: 11.5px; }
     }
@@ -1085,74 +1069,74 @@
     <div class="stories">
       <div class="story-card">
         <div class="story-result">
-          <span class="story-num">$123K+ <span class="story-num-suffix">/mo</span></span>
-          <span class="story-num-label">From zero · 6 months</span>
+          <span class="story-num">$20K <span class="story-num-suffix">first month</span></span>
+          <span class="story-num-label">4,500 followers · Month 1</span>
         </div>
         <div class="story-meta">
-          <span class="story-name">Matt Par</span>
-          <span class="story-handle">@makemoneymatt</span>
+          <span class="story-name">Richard Ehrengruber</span>
+          <span class="story-handle">Multiple theme pages</span>
         </div>
-        <p class="story-desc">Started with no offer and no audience. Hit $123k+ per month within 6 months and $5M+ in total sales monetising what he already knew.</p>
+        <p class="story-desc">No offer, no positioning, no monetisation strategy. Made $20k and gained 4,500+ followers in his very first month after setting up the system.</p>
       </div>
 
       <div class="story-card">
         <div class="story-result">
-          <span class="story-num">500K <span class="story-num-suffix">followers</span></span>
-          <span class="story-num-label">From zero · 1 year · Faceless</span>
+          <span class="story-num">$10K <span class="story-num-suffix">first sales</span></span>
+          <span class="story-num-label">From zero · Faceless</span>
         </div>
         <div class="story-meta">
           <span class="story-name">Roland</span>
           <span class="story-handle">@wave4wealth</span>
         </div>
-        <p class="story-desc">Built a faceless theme page from scratch to 500k followers in a single year. First $10k in sales without showing his face or owning a product.</p>
-      </div>
-
-      <div class="story-card">
-        <div class="story-result">
-          <span class="story-num">300K+ <span class="story-num-suffix">followers</span></span>
-          <span class="story-num-label">From zero · 1 year</span>
-        </div>
-        <div class="story-meta">
-          <span class="story-name">Linford</span>
-          <span class="story-handle">@mindsetmirage</span>
-        </div>
-        <p class="story-desc">After 8 failed businesses and $10k in debt, built a faceless theme page from zero to 300k+ followers and a real income stream.</p>
-      </div>
-
-      <div class="story-card">
-        <div class="story-result">
-          <span class="story-num">380K <span class="story-num-suffix">followers</span></span>
-          <span class="story-num-label">From zero · 1 year</span>
-        </div>
-        <div class="story-meta">
-          <span class="story-name">Kelly Sloan</span>
-          <span class="story-handle">@daily.money.matters</span>
-        </div>
-        <p class="story-desc">No online income, no idea where to start. Followed the system from zero to 380k followers in a year with 2k+ new followers daily.</p>
-      </div>
-
-      <div class="story-card">
-        <div class="story-result">
-          <span class="story-num">$170K <span class="story-num-suffix">record month</span></span>
-          <span class="story-num-label">From &lt;$100 per day</span>
-        </div>
-        <div class="story-meta">
-          <span class="story-name">Lorenzo &amp; Edoardo</span>
-          <span class="story-handle">Italian e-learning</span>
-        </div>
-        <p class="story-desc">Started barely earning $100 per day. Hit a $170k record month and $800k+ in total sales after applying the playbook.</p>
+        <p class="story-desc">No business plan, no product, didn't want to show his face. Built a faceless theme page from scratch and made his first $10k in sales.</p>
       </div>
 
       <div class="story-card">
         <div class="story-result">
           <span class="story-num">$15K <span class="story-num-suffix">in 6 weeks</span></span>
-          <span class="story-num-label">230K+ followers · Faceless</span>
+          <span class="story-num-label">Faceless · No mentor before</span>
         </div>
         <div class="story-meta">
           <span class="story-name">Melory</span>
           <span class="story-handle">@bossbabemaverick</span>
         </div>
-        <p class="story-desc">Struggled to make money online with no mentor. Grew to 230k+ followers and earned $15k in just 6 weeks running a faceless page.</p>
+        <p class="story-desc">Struggled to make money online with no mentor and no clear direction. Built a faceless page and earned $15k in just 6 weeks.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">$12K <span class="story-num-suffix">in 11 days</span></span>
+          <span class="story-num-label">From no income</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Michelle Nolting</span>
+          <span class="story-handle">@successfulmotion</span>
+        </div>
+        <p class="story-desc">Couldn't get traction online, no mentor, wanted a faceless setup. Followed the playbook and pulled in $12k inside 11 days.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">$20K <span class="story-num-suffix">record month</span></span>
+          <span class="story-num-label">Expected $2K · Anonymous</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Taha</span>
+          <span class="story-handle">@taha.hustles</span>
+        </div>
+        <p class="story-desc">Started fully anonymous with no system and no brand identity. Was hoping for $2k a month. Hit a $20k record month instead.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result">
+          <span class="story-num">First $997 <span class="story-num-suffix">DM sale</span></span>
+          <span class="story-num-label">First offer launched</span>
+        </div>
+        <div class="story-meta">
+          <span class="story-name">Pritash</span>
+          <span class="story-handle">Theme page owner</span>
+        </div>
+        <p class="story-desc">Had a page but no offer, no funnel, no monetisation. Launched his first offer using the system and closed his first $997 DM sale.</p>
       </div>
     </div>
   </div>
