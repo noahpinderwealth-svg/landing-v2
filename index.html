@@ -434,14 +434,30 @@
       color: var(--text);
     }
 
-    /* TESTIMONIALS */
-    .test-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    /* TESTIMONIALS - horizontal carousel */
+    .test-carousel { position: relative; }
+    .test-track-wrap { position: relative; }
+    .test-track {
+      display: flex;
       gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 6px 4px 14px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .test-track::-webkit-scrollbar { display: none; }
+    .test-track .test-card {
+      flex: 0 0 calc(33.333% - 11px);
+      scroll-snap-align: start;
     }
     @media (max-width: 900px) {
-      .test-grid { grid-template-columns: 1fr; gap: 12px; max-width: 560px; margin: 0 auto; }
+      .test-track .test-card { flex: 0 0 calc(50% - 8px); }
+    }
+    @media (max-width: 600px) {
+      .test-track .test-card { flex: 0 0 86%; }
     }
     .test-card {
       background: #fff;
@@ -456,6 +472,40 @@
       box-shadow: 0 12px 28px rgba(11,13,18,0.06);
       border-color: #d1d5db;
     }
+
+    /* Carousel controls */
+    .test-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2;
+      box-shadow: 0 8px 18px rgba(11,13,18,0.08);
+      transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+    }
+    .test-arrow:hover { background: var(--red); color: #fff; border-color: var(--red); }
+    .test-arrow:active { transform: translateY(-50%) scale(0.94); }
+    .test-arrow svg { width: 18px; height: 18px; }
+    .test-arrow.prev { left: -20px; }
+    .test-arrow.next { right: -20px; }
+    @media (max-width: 900px) { .test-arrow { display: none; } }
+
+    .test-dots {
+      display: flex; justify-content: center; gap: 8px;
+      margin-top: 18px;
+    }
+    .test-dot {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: #d1d5db;
+      border: none; padding: 0;
+      cursor: pointer;
+      transition: background 0.15s, width 0.15s;
+    }
+    .test-dot.active { background: var(--red); width: 22px; }
     .test-stars {
       color: #fbbf24; letter-spacing: 2px; font-size: 14px;
     }
@@ -846,40 +896,106 @@
       <h2>1,900+ Five-Star Trustpilot Reviews</h2>
     </div>
 
-    <div class="test-grid">
-      <div class="test-card">
-        <span class="test-stars">★★★★★</span>
-        <p class="test-text">"Niklas Pedde's IGU 4.0 offers tons of valuable information plus directives on how to build and sustain an Instagram personal/theme page and build an audience. His program is value-packed and an absolute no-brainer if you're just starting out."</p>
-        <div class="test-author">
-          <div class="test-av">ST</div>
-          <div>
-            <div class="test-name">Stephen Turner</div>
-            <div class="test-source">Trustpilot Review</div>
+    <div class="test-carousel">
+      <div class="test-track-wrap">
+        <button class="test-arrow prev" type="button" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="test-track">
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"Niklas Pedde's IGU 4.0 offers tons of valuable information plus directives on how to build and sustain an Instagram personal/theme page and build an audience. His program is value-packed and an absolute no-brainer if you're just starting out."</p>
+            <div class="test-author">
+              <div class="test-av">ST</div>
+              <div>
+                <div class="test-name">Stephen Turner</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"Wow! I am less than 48 hours in and I'm already blown away. Niklas comes across as extremely knowledgeable and successful but also humble and trustworthy. The videos are engaging and easy to follow. The gems dropped so far are worth 100x the price."</p>
+            <div class="test-author">
+              <div class="test-av">AJ</div>
+              <div>
+                <div class="test-name">Ashley Jones-Jordan</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"Absolutely loving Insta University 4.0. So much valuable knowledge to take in. Niklas is a very well-spoken successful man, his videos are really well structured and full of value. Highly advise this course: get your pen and paper, take notes, and start learning from the best."</p>
+            <div class="test-author">
+              <div class="test-av">HS</div>
+              <div>
+                <div class="test-name">Hugh Smyth</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"My experience was outstanding. Niklas explains everything in detail with enthusiasm and genuine positivity. You immediately feel that your goals can be realized, and getting started and doing the work with the end in mind is an absolute joy."</p>
+            <div class="test-author">
+              <div class="test-av">SK</div>
+              <div>
+                <div class="test-name">Steven Kringold</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"I have recently purchased Niklas's training programme on how to monetize Instagram theme pages after a lot of research. I find him honest, trustworthy and authentic, refreshing in this space. His training is thorough, in-depth and professional."</p>
+            <div class="test-author">
+              <div class="test-av">KD</div>
+              <div>
+                <div class="test-name">Kyla De Vlieg</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"This course literally has everything you need to succeed with Instagram Theme Pages. Even had some amazing videos from Tai Lopez and the Consulting Club mastermind (worth thousands). The course lays everything out step-by-step and holds nothing back. I'm really impressed."</p>
+            <div class="test-author">
+              <div class="test-av">MA</div>
+              <div>
+                <div class="test-name">Michael D. Alojado</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"This program is fantastic and delivers 1000 times more value than the price we pay. I've just finished the preparation and mindset module and discovered why I've been unable to get results in digital for a year. I feel like I'm starting to have the right mindset to build my digital empire."</p>
+            <div class="test-author">
+              <div class="test-av">TB</div>
+              <div>
+                <div class="test-name">Tiago Bernardo</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card">
+            <span class="test-stars">★★★★★</span>
+            <p class="test-text">"These guys are super professionals. Though the topics may seem complex, they're explained in a simple, clear and precise manner so everyone can understand. The event was well organized, interactive, with plenty of opportunities for questions and networking."</p>
+            <div class="test-author">
+              <div class="test-av">TJ</div>
+              <div>
+                <div class="test-name">Tommy Jerry</div>
+                <div class="test-source">Trustpilot Review</div>
+              </div>
+            </div>
           </div>
         </div>
+        <button class="test-arrow next" type="button" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
-      <div class="test-card">
-        <span class="test-stars">★★★★★</span>
-        <p class="test-text">"Wow! I am less than 48 hours in and I'm already blown away. Niklas comes across as extremely knowledgeable and successful but also humble and trustworthy. The videos are engaging and easy to follow. The gems dropped so far are worth 100x the price."</p>
-        <div class="test-author">
-          <div class="test-av">AJ</div>
-          <div>
-            <div class="test-name">Ashley Jones-Jordan</div>
-            <div class="test-source">Trustpilot Review</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <span class="test-stars">★★★★★</span>
-        <p class="test-text">"I have recently purchased Niklas's training programme on how to monetize Instagram theme pages after a lot of research. I find him honest, trustworthy and authentic, refreshing in this space. His training is thorough, in-depth and professional."</p>
-        <div class="test-author">
-          <div class="test-av">KD</div>
-          <div>
-            <div class="test-name">Kyla De Vlieg</div>
-            <div class="test-source">Trustpilot Review</div>
-          </div>
-        </div>
-      </div>
+      <div class="test-dots" role="tablist" aria-label="Testimonial pagination"></div>
     </div>
   </div>
 </section>
@@ -945,6 +1061,7 @@
 </footer>
 
 <script>
+  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
@@ -961,6 +1078,52 @@
       }
     });
   });
+
+  // Testimonial carousel
+  (function() {
+    const track = document.querySelector('.test-carousel .test-track');
+    const dotsBox = document.querySelector('.test-carousel .test-dots');
+    const prevBtn = document.querySelector('.test-carousel .test-arrow.prev');
+    const nextBtn = document.querySelector('.test-carousel .test-arrow.next');
+    if (!track || !dotsBox) return;
+    const cards = Array.from(track.querySelectorAll('.test-card'));
+    if (!cards.length) return;
+
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'test-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+      dot.addEventListener('click', () => {
+        track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      });
+      dotsBox.appendChild(dot);
+    });
+    const dots = Array.from(dotsBox.querySelectorAll('.test-dot'));
+
+    function scrollByOne(dir) {
+      const w = cards[0].offsetWidth + 16; // card width + gap
+      track.scrollBy({ left: dir * w, behavior: 'smooth' });
+    }
+    if (prevBtn) prevBtn.addEventListener('click', () => scrollByOne(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => scrollByOne(1));
+
+    let scrollTimer;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const trackRect = track.getBoundingClientRect();
+        const center = trackRect.left + trackRect.width / 2;
+        let nearest = 0, best = Infinity;
+        cards.forEach((card, i) => {
+          const r = card.getBoundingClientRect();
+          const dist = Math.abs((r.left + r.width / 2) - center);
+          if (dist < best) { best = dist; nearest = i; }
+        });
+        dots.forEach((d, i) => d.classList.toggle('active', i === nearest));
+      }, 80);
+    });
+  })();
 </script>
 
 </body>
