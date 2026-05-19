@@ -169,39 +169,45 @@
     .hero-grid {
       display: flex; flex-direction: column;
       align-items: center; text-align: center;
-      gap: 36px;
+      gap: 28px;
     }
 
+    /* Compact intro group above the video. Tight rhythm keeps the eye moving
+       to the video, not loitering on the copy. */
+    .hero-intro { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 780px; }
+
     .hero-trust {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600;
       color: var(--muted-on-dark);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
-      padding: 7px 14px; border-radius: 999px;
-      margin-bottom: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 12px; border-radius: 999px;
     }
     .hero-trust .stars { color: #fbbf24; letter-spacing: 1px; }
 
     .hero h1 {
       color: var(--text-on-dark);
-      margin: 0 auto 18px;
-      max-width: 860px;
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
     }
     .hero h1 .accent { color: var(--red); }
 
     .hero-sub {
-      font-size: 17.5px; line-height: 1.55;
+      font-size: 16px; line-height: 1.5;
       color: var(--muted-on-dark);
-      margin: 0 auto 26px;
-      max-width: 620px;
+      margin: 0;
+      max-width: 580px;
     }
 
+    /* CTA group sits BELOW the video as the next action after watching. */
     .hero-cta-block {
       display: flex; align-items: center; justify-content: center;
       column-gap: 22px; row-gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
+      margin: 0;
     }
     .hero-cta-price {
       display: flex; flex-direction: column; line-height: 1.25;
@@ -218,41 +224,42 @@
       color: #6b7280; font-size: 14px; font-weight: 500; text-decoration: line-through;
     }
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 0 auto;
-      max-width: 560px;
-      width: 100%;
+    /* Slim credibility strip BELOW the hero. Inline metrics separated by a thin
+       divider so they read as a single horizontal credibility line, not three
+       competing tiles. */
+    .stats-strip {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 22px 0;
     }
-    .hero-stat {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 16px 12px;
-      text-align: center;
+    .stats-strip-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: clamp(24px, 5vw, 72px); flex-wrap: wrap;
     }
-    .hero-stat .n {
-      display: block; font-size: 22px; font-weight: 900;
-      color: var(--text-on-dark); letter-spacing: -0.5px;
-      line-height: 1;
+    .stat-item { display: inline-flex; align-items: baseline; gap: 8px; }
+    .stat-item .n {
+      font-size: 22px; font-weight: 900;
+      color: var(--text-on-dark);
+      letter-spacing: -0.5px; line-height: 1;
     }
-    .hero-stat .l {
-      display: block; font-size: 10.5px; font-weight: 600;
+    .stat-item .l {
+      font-size: 12.5px; font-weight: 600;
       color: var(--muted-on-dark);
-      text-transform: uppercase; letter-spacing: 0.8px;
-      margin-top: 8px;
+      letter-spacing: 0.2px;
     }
 
-    /* HERO VIDEO */
+    /* HERO VIDEO - the focal point of the page */
     .hero-video {
       width: 100%;
-      max-width: 720px; margin: 0 auto;
+      max-width: 820px; margin: 0 auto;
       border-radius: 18px;
       overflow: hidden;
       background: #000;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 30px 80px rgba(239,68,68,0.18),
+        0 50px 100px rgba(0,0,0,0.5);
       position: relative;
     }
     .hero-video a[href*="vidalytics.com"],
@@ -577,15 +584,16 @@
     /* MOBILE TWEAKS */
     @media (max-width: 760px) {
       .section { padding: 56px 0; }
-      .hero { padding: 32px 0 48px; }
-      .hero-grid { gap: 28px; }
-      .hero-trust { font-size: 12px; padding: 6px 12px; margin-bottom: 16px; }
-      .hero-sub { font-size: 16px; margin-bottom: 22px; }
-      .hero-cta-block { column-gap: 16px; row-gap: 12px; margin-bottom: 22px; }
-      .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 460px; }
-      .hero-stat { padding: 12px 8px; border-radius: 10px; }
-      .hero-stat .n { font-size: 18px; }
-      .hero-stat .l { font-size: 9.5px; letter-spacing: 0.5px; margin-top: 6px; }
+      .hero { padding: 28px 0 36px; }
+      .hero-grid { gap: 22px; }
+      .hero-intro { gap: 12px; }
+      .hero-trust { font-size: 11.5px; padding: 5px 11px; }
+      .hero-sub { font-size: 15.5px; }
+      .hero-cta-block { column-gap: 16px; row-gap: 12px; }
+      .stats-strip { padding: 16px 0; }
+      .stats-strip-inner { gap: 16px 28px; }
+      .stat-item .n { font-size: 19px; }
+      .stat-item .l { font-size: 11.5px; }
       .hero-video { border-radius: 14px; }
       .modules { grid-template-columns: 1fr; gap: 10px; }
       .module { padding: 20px 18px; border-radius: 12px; }
@@ -621,11 +629,12 @@
     }
     @media (max-width: 420px) {
       .section { padding: 48px 0; }
-      .hero { padding: 26px 0 40px; }
-      .hero h1 { font-size: clamp(25px, 7.5vw, 30px); }
+      .hero { padding: 22px 0 32px; }
+      .hero h1 { font-size: clamp(23px, 7vw, 28px); }
       .hero-sub { font-size: 15px; }
-      .hero-stats .l { font-size: 9px; }
-      .hero-stat .n { font-size: 17px; }
+      .stats-strip-inner { gap: 12px 22px; }
+      .stat-item .n { font-size: 17px; }
+      .stat-item .l { font-size: 11px; }
       .price-amount { font-size: 50px; }
       .price-amount sup, .price-amount .dec { font-size: 22px; }
       .module { padding: 18px 16px; }
@@ -660,36 +669,14 @@
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-copy">
+
+      <div class="hero-intro">
         <span class="hero-trust">
           <span class="stars">★★★★★</span>
           Rated 4.2 · 1,900+ Trustpilot Reviews
         </span>
         <h1>The Faceless Instagram System For Building <span class="accent">Profitable Theme Pages</span> From Scratch</h1>
         <p class="hero-sub">The step-by-step system to start, grow and monetise faceless Instagram theme pages.</p>
-
-        <div class="hero-cta-block">
-          <a href="#pricing" class="btn btn-lg">GET INSTANT ACCESS</a>
-          <div class="hero-cta-price">
-            <strong>$6.95 today <s>$497</s></strong>
-            <span>One-time payment &middot; 60-day money-back</span>
-          </div>
-        </div>
-
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="n">20+</span>
-            <span class="l">Theme Pages</span>
-          </div>
-          <div class="hero-stat">
-            <span class="n">17M+</span>
-            <span class="l">Followers</span>
-          </div>
-          <div class="hero-stat">
-            <span class="n">1B+</span>
-            <span class="l">Monthly Views</span>
-          </div>
-        </div>
       </div>
 
       <div class="hero-video">
@@ -706,9 +693,27 @@
         })(window, document, 'Vidalytics', 'vidalytics_embed_Ft04sHGFZjXbr9Le', 'https://fast.vidalytics.com/embeds/89_Ly9OQ/Ft04sHGFZjXbr9Le/');
         </script>
       </div>
+
+      <div class="hero-cta-block">
+        <a href="#pricing" class="btn btn-lg">GET INSTANT ACCESS</a>
+        <div class="hero-cta-price">
+          <strong>$6.95 today <s>$497</s></strong>
+          <span>One-time payment &middot; 60-day money-back</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="container stats-strip-inner">
+    <div class="stat-item"><span class="n">20+</span><span class="l">Theme Pages</span></div>
+    <div class="stat-item"><span class="n">17M+</span><span class="l">Followers</span></div>
+    <div class="stat-item"><span class="n">1B+</span><span class="l">Monthly Views</span></div>
+  </div>
+</div>
 
 <!-- WHATS INSIDE -->
 <section class="section">
