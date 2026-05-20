@@ -298,6 +298,8 @@
     .section { padding: 48px 0; }
     .section-soft { background: var(--bg-soft); }
     .section-dark { background: var(--bg-dark); color: var(--text-on-dark); }
+    /* Two adjacent same-background sections read as one continuous block — collapse the doubled padding between them */
+    .section-soft + .section-soft { padding-top: 12px; }
     .section-head { text-align: center; margin: 0 auto 28px; max-width: 720px; }
     .section-head .eyebrow { margin-bottom: 8px; }
     .section-head h2 { margin-bottom: 8px; }
@@ -960,6 +962,7 @@
     /* MOBILE TWEAKS */
     @media (max-width: 760px) {
       .section { padding: 44px 0; }
+      .section-soft + .section-soft { padding-top: 8px; }
       .hero { padding: 24px 0 32px; }
       .hero-grid { gap: 22px; }
       .hero-intro { gap: 12px; }
