@@ -654,81 +654,22 @@
       .transform-card { padding: 22px 20px; }
     }
 
-    /* FIT-CHECK (Who this is / isn't for) — sits right before pricing
-       and softly qualifies leads. Two columns, green checks vs grey X's. */
-    .fit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+    /* Inline mid-page CTAs — single centered button with reassurance microcopy.
+       Capitalises on the emotional peak of the section that just closed. */
+    .section-cta {
+      text-align: center;
+      margin-top: 36px;
     }
-    .fit-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 26px 24px 24px;
-      display: flex; flex-direction: column;
-      gap: 18px;
+    .section-cta .btn { box-shadow: 0 8px 24px rgba(239,68,68,0.32); }
+    .section-cta-note {
+      margin: 12px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.1px;
     }
-    .fit-card.not-for {
-      background: #f8f9fb;
-      border-color: #e5e7eb;
-    }
-    .fit-card-head {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .fit-card-icon {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .fit-card.for .fit-card-icon {
-      background: rgba(16,185,129,0.12);
-      color: #059669;
-    }
-    .fit-card.not-for .fit-card-icon {
-      background: rgba(107,114,128,0.10);
-      color: #6b7280;
-    }
-    .fit-card-icon svg { width: 18px; height: 18px; }
-    .fit-card h3 {
-      font-size: 18px; font-weight: 800;
-      letter-spacing: -0.3px; line-height: 1.2;
-      margin: 0;
-    }
-    .fit-list {
-      list-style: none;
-      display: flex; flex-direction: column;
-      gap: 11px;
-      margin: 0;
-    }
-    .fit-list li {
-      position: relative;
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 14.5px; line-height: 1.5;
-      color: #1f2937;
-    }
-    .fit-card.not-for .fit-list li { color: #6b7280; }
-    .fit-list li::before {
-      content: '';
-      flex-shrink: 0;
-      width: 18px; height: 18px;
-      margin-top: 2px;
-      border-radius: 50%;
-    }
-    .fit-card.for .fit-list li::before {
-      background:
-        rgba(16,185,129,0.12)
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / 12px no-repeat;
-    }
-    .fit-card.not-for .fit-list li::before {
-      background:
-        rgba(107,114,128,0.10)
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='7' x2='17' y2='17'/><line x1='7' y1='17' x2='17' y2='7'/></svg>") center / 11px no-repeat;
-    }
+    .transform-section .section-cta-note { color: var(--muted-on-dark); }
     @media (max-width: 760px) {
-      .fit-grid { grid-template-columns: 1fr; gap: 12px; }
-      .fit-card { padding: 22px 20px; }
+      .section-cta { margin-top: 28px; }
     }
 
     /* FOUNDER + PORTFOLIO - single-column flow so portfolio cards can span full width */
@@ -1406,7 +1347,7 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="#" class="brand">
+    <a href="/" class="brand" aria-label="Instagram University home">
       <img src="logo.png" alt="" width="120" height="110" fetchpriority="high">
       <span class="brand-name">Instagram <span>University</span></span>
     </a>
@@ -1608,6 +1549,11 @@
         </ul>
       </div>
     </div>
+
+    <div class="section-cta">
+      <a href="#pricing" class="btn btn-lg">Get the Full System</a>
+      <p class="section-cta-note">One payment · $6.95 today · 60-day money-back</p>
+    </div>
   </div>
 </section>
 
@@ -1740,7 +1686,7 @@
 
       <div class="story-card">
         <div class="story-head">
-          <div class="story-avatar"><img src="clients/michelle.png" alt="Michelle Nolting" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-avatar"><img src="clients/michelle.jpg" alt="Michelle Nolting" width="192" height="192" loading="lazy" decoding="async"></div>
           <div class="story-id">
             <span class="story-name">Michelle Nolting</span>
             <span class="story-role">@successfulmotion</span>
@@ -1751,7 +1697,7 @@
 
       <div class="story-card">
         <div class="story-head">
-          <div class="story-avatar"><img src="clients/pritash.png" alt="Pritash @billionaire_hustle" width="160" height="160" loading="lazy" decoding="async"></div>
+          <div class="story-avatar"><img src="clients/pritash.jpg" alt="Pritash @billionaire_hustle" width="192" height="192" loading="lazy" decoding="async"></div>
           <div class="story-id">
             <span class="story-name">Pritash</span>
             <span class="story-role">@billionaire_hustle</span>
@@ -1913,50 +1859,6 @@
   </div>
 </section>
 
-<!-- FIT CHECK -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Honest Fit Check</span>
-      <h2>Who Instagram University Is — And Isn't — For</h2>
-      <p class="section-lead">We'd rather you skip the program than buy and feel mismatched. Here's the truth.</p>
-    </div>
-
-    <div class="fit-grid">
-      <div class="fit-card for">
-        <div class="fit-card-head">
-          <span class="fit-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"/></svg>
-          </span>
-          <h3>This is for you if…</h3>
-        </div>
-        <ul class="fit-list">
-          <li>You're starting from zero — no audience, no offer, no experience needed</li>
-          <li>You want to build a faceless brand and stay completely anonymous</li>
-          <li>You can commit to posting consistently and following a system</li>
-          <li>You're looking for a real path to monetise Instagram, not theory</li>
-          <li>You want to learn from operators who actually run 20+ profitable pages</li>
-        </ul>
-      </div>
-      <div class="fit-card not-for">
-        <div class="fit-card-head">
-          <span class="fit-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
-          </span>
-          <h3>This isn't for you if…</h3>
-        </div>
-        <ul class="fit-list">
-          <li>You want overnight results without putting in any work</li>
-          <li>You're chasing the next "viral hack" instead of building a real asset</li>
-          <li>You're not willing to post content consistently for the first 90 days</li>
-          <li>You need someone to build the page for you — this is a do-it-yourself system</li>
-          <li>You're already running multiple 7-figure theme pages and need nothing new</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PRICING + FAQ -->
 <section class="section section-soft" id="pricing">
   <div class="container">
@@ -1976,7 +1878,8 @@
           <span class="price-stars">★★★★★</span>
           <span>Rated 4.2 · 1,900+ Trustpilot reviews</span>
         </div>
-        <a href="#" class="btn btn-lg btn-full">GET INSTANT ACCESS</a>
+        <!-- TODO: replace #pricing with the real checkout URL when ready -->
+        <a href="#pricing" class="btn btn-lg btn-full">GET INSTANT ACCESS</a>
         <div class="price-trust">
           <span class="price-secure">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
@@ -2045,15 +1948,26 @@
 </footer>
 
 <script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-q').forEach(btn => {
+  // FAQ accordion — auto-wire IDs so each button announces its panel
+  // and each panel labels itself by its button (proper disclosure widget).
+  document.querySelectorAll('.faq-item').forEach((item, i) => {
+    const btn = item.querySelector('.faq-q');
+    const panel = item.querySelector('.faq-a');
+    if (!btn || !panel) return;
+    const btnId = 'faq-q-' + i;
+    const panelId = 'faq-a-' + i;
+    btn.id = btnId;
     btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', panelId);
+    panel.id = panelId;
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-labelledby', btnId);
+
     btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        const q = i.querySelector('.faq-q');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('open');
+        const q = other.querySelector('.faq-q');
         if (q) q.setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) {
@@ -2067,7 +1981,7 @@
   (function() {
     // Containers whose children should stagger in (cards in a grid)
     const staggerTargets = document.querySelectorAll(
-      '.how-steps, .modules, .stories, .portfolio, .stats-strip-inner, .transform-grid, .fit-grid'
+      '.how-steps, .modules, .stories, .portfolio, .stats-strip-inner, .transform-grid'
     );
     staggerTargets.forEach(el => el.classList.add('reveal-stagger'));
 
