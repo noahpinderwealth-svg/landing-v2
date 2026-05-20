@@ -217,34 +217,6 @@
       text-wrap: balance;
     }
 
-    /* CTA group sits BELOW the video as the next action after watching.
-       Stacked vertically with the price block as compact microcopy. */
-    .hero-cta-block {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 12px;
-      margin: 0;
-    }
-    .hero-cta-price {
-      display: inline-flex; align-items: baseline; flex-wrap: wrap;
-      justify-content: center;
-      column-gap: 8px; row-gap: 4px;
-      font-size: 13px; color: var(--muted-on-dark);
-      letter-spacing: 0.2px; text-align: center;
-      max-width: 380px;
-    }
-    .hero-cta-price strong {
-      color: var(--text-on-dark); font-weight: 800;
-      letter-spacing: -0.1px; font-size: 14px;
-    }
-    .hero-cta-price s {
-      color: #6b7280; font-size: 13px; font-weight: 500; text-decoration: line-through;
-    }
-    .hero-cta-price .dot { color: rgba(255,255,255,0.25); }
-    @media (max-width: 500px) {
-      .hero-cta-price .dot { display: none; }
-      .hero-cta-price { column-gap: 12px; row-gap: 4px; font-size: 12.5px; }
-    }
-
     /* Slim credibility strip BELOW the hero. Inline metrics separated by a thin
        divider so they read as a single horizontal credibility line, not three
        competing tiles. */
@@ -968,7 +940,6 @@
       .hero-intro { gap: 12px; }
       .hero-trust { font-size: 11.5px; padding: 5px 11px; }
       .hero-sub { font-size: 15.5px; }
-      .hero-cta-block { column-gap: 16px; row-gap: 12px; }
       .stats-strip { padding: 16px 0; }
       .stats-strip-inner { gap: 16px 28px; }
       .stat-item .n { font-size: 19px; }
@@ -1163,18 +1134,7 @@
         </script>
       </div>
 
-      <div class="hero-cta-block">
-        <a href="#pricing" class="btn btn-lg">GET INSTANT ACCESS</a>
-        <p class="hero-cta-price">
-          <strong>$6.95 today</strong>
-          <span class="dot">·</span>
-          <span>was <s>$497</s></span>
-          <span class="dot">·</span>
-          <span>One-time payment</span>
-          <span class="dot">·</span>
-          <span>60-day money-back</span>
-        </p>
-      </div>
+      <a href="#pricing" class="btn btn-lg">GET INSTANT ACCESS</a>
 
     </div>
   </div>
