@@ -528,17 +528,18 @@
     }
     .portfolio-card {
       position: relative;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 1 / 1;
       background:
         radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255,255,255,0.06), transparent 65%),
         linear-gradient(160deg, #181d28 0%, #0a0c12 100%);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
-      padding: 22px 20px 22px;
+      padding: 20px 20px 22px;
       overflow: hidden;
       color: var(--text-on-dark);
       display: flex; flex-direction: column;
       justify-content: space-between;
+      gap: 18px;
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .portfolio-card:hover {
@@ -567,7 +568,7 @@
       border: 1.5px solid rgba(255,255,255,0.14);
       display: flex; align-items: center; justify-content: center;
     }
-    .pc-logo img { width: 86%; height: 86%; object-fit: contain; }
+    .pc-logo img { width: 100%; height: 100%; object-fit: cover; }
     .pc-handle-block { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
     .pc-handle {
       font-size: 14.5px; font-weight: 800;
