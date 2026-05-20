@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0b0d12">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
   <meta name="description" content="The step-by-step system to start, grow and monetise faceless Instagram theme pages. Built on a real theme page network of 20+ pages and 17M+ followers.">
   <meta name="robots" content="index, follow">
 
@@ -64,6 +65,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
       overflow-x: hidden;
     }
     :focus { outline: none; }
@@ -71,6 +73,8 @@
     img, svg, video { max-width: 100%; height: auto; display: block; }
     button { font: inherit; cursor: pointer; background: none; border: none; color: inherit; }
     a { color: inherit; text-decoration: none; }
+    /* Anchor targets sit below the section top so the heading isn't flush with the viewport edge */
+    [id] { scroll-margin-top: 24px; }
 
     :root {
       --bg: #ffffff;
@@ -89,11 +93,12 @@
     .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
     .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-    h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; text-wrap: balance; }
     h1 { font-size: clamp(32px, 4.8vw, 52px); font-weight: 900; line-height: 1.08; }
     h2 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; }
     h3 { font-size: clamp(19px, 2.2vw, 24px); }
     p { color: #374151; }
+    .section-lead { text-wrap: pretty; }
 
     .eyebrow {
       display: inline-block;
@@ -129,7 +134,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding-top: 18px; padding-bottom: 18px;
     }
-    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text-on-dark); font-weight: 800; letter-spacing: -0.3px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text-on-dark); font-weight: 800; letter-spacing: -0.3px; padding: 6px 4px; margin: -6px -4px; }
     .brand img {
       height: 30px; width: auto;
       /* Source PNG has a white square background; invert it so the white background
@@ -145,7 +150,8 @@
       border: 1px solid rgba(255,255,255,0.12);
       color: var(--text-on-dark);
       font-size: 13.5px; font-weight: 700;
-      padding: 8px 14px; border-radius: 999px;
+      padding: 10px 16px; border-radius: 999px;
+      min-height: 40px;
       transition: background 0.15s, border-color 0.15s;
     }
     .header-cta:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
@@ -189,17 +195,26 @@
     .hero h1 {
       color: var(--text-on-dark);
       margin: 0;
-      max-width: 780px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.1;
+      max-width: 880px;
+      font-size: clamp(30px, 4.4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
     }
-    .hero h1 .accent { color: var(--red); }
+    .hero h1 .accent {
+      color: var(--red);
+      background: linear-gradient(135deg, #ef4444 0%, #f97777 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     .hero-sub {
-      font-size: 16px; line-height: 1.5;
+      font-size: 16.5px; line-height: 1.55;
       color: var(--muted-on-dark);
       margin: 0;
-      max-width: 580px;
+      max-width: 600px;
+      text-wrap: balance;
     }
 
     /* CTA group sits BELOW the video as the next action after watching.
@@ -212,9 +227,10 @@
     .hero-cta-price {
       display: inline-flex; align-items: baseline; flex-wrap: wrap;
       justify-content: center;
-      column-gap: 8px; row-gap: 2px;
+      column-gap: 8px; row-gap: 4px;
       font-size: 13px; color: var(--muted-on-dark);
       letter-spacing: 0.2px; text-align: center;
+      max-width: 380px;
     }
     .hero-cta-price strong {
       color: var(--text-on-dark); font-weight: 800;
@@ -224,6 +240,10 @@
       color: #6b7280; font-size: 13px; font-weight: 500; text-decoration: line-through;
     }
     .hero-cta-price .dot { color: rgba(255,255,255,0.25); }
+    @media (max-width: 500px) {
+      .hero-cta-price .dot { display: none; }
+      .hero-cta-price { column-gap: 12px; row-gap: 4px; font-size: 12.5px; }
+    }
 
     /* Slim credibility strip BELOW the hero. Inline metrics separated by a thin
        divider so they read as a single horizontal credibility line, not three
@@ -617,12 +637,11 @@
     }
     @media (max-width: 900px) {
       .portfolio { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .portfolio-card { aspect-ratio: auto; padding: 22px 20px; }
-      .pc-head { margin-bottom: 28px; }
+      .portfolio-card { aspect-ratio: auto; padding: 20px 18px; gap: 22px; }
     }
     @media (max-width: 460px) {
       .portfolio { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
-      .pc-head { margin-bottom: 24px; }
+      .portfolio-card { gap: 20px; }
       .pc-logo { width: 44px; height: 44px; }
     }
 
@@ -922,10 +941,12 @@
       text-align: center;
     }
     .footer-links {
-      display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 4px 18px; flex-wrap: wrap;
       margin-bottom: 14px;
     }
     .footer-links a {
+      display: inline-flex; align-items: center;
+      padding: 10px 8px; min-height: 44px;
       font-size: 13px; color: var(--text-on-dark);
       font-weight: 600; transition: color 0.15s;
     }
@@ -1051,6 +1072,48 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
       .hero::before, .btn-lg { animation: none; }
+    }
+
+    /* STICKY MOBILE CTA — appears after the hero scrolls out, hides
+       once the pricing section is in view so it doesn't double up. */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      left: 12px; right: 12px; bottom: 12px;
+      z-index: 50;
+      padding: 10px 12px;
+      background: rgba(11,13,18,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+      align-items: center; justify-content: space-between;
+      gap: 12px;
+      transform: translateY(120%);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta-price {
+      display: flex; flex-direction: column; line-height: 1.15;
+      color: var(--text-on-dark); min-width: 0;
+    }
+    .sticky-cta-price strong {
+      font-size: 17px; font-weight: 900; letter-spacing: -0.4px;
+    }
+    .sticky-cta-price span {
+      font-size: 11px; color: var(--muted-on-dark);
+      letter-spacing: 0.2px;
+    }
+    .sticky-cta .btn {
+      padding: 12px 18px; font-size: 14px;
+      box-shadow: 0 6px 18px rgba(239,68,68,0.4);
+      animation: none;
+      flex-shrink: 0;
+    }
+    @media (max-width: 760px) {
+      .sticky-cta { display: flex; }
     }
   </style>
 </head>
@@ -1574,23 +1637,23 @@
         <span class="eyebrow">Questions Answered</span>
         <h3>Frequently Asked</h3>
         <div class="faq-item">
-          <button class="faq-q">How &amp; when will I get access? <span class="ic">+</span></button>
+          <button type="button" class="faq-q">How &amp; when will I get access? <span class="ic">+</span></button>
           <div class="faq-a">Upon completion of purchase you will receive an activation email granting access to the course and additional bonuses.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">How is this different? <span class="ic">+</span></button>
+          <button type="button" class="faq-q">How is this different? <span class="ic">+</span></button>
           <div class="faq-a">This program has been built and developed over the past 8 years and helped scale over 20 Instagram theme pages to a combined following of 17m people generating multi 7 figures in annual revenue.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Can I do this without showing my face? <span class="ic">+</span></button>
+          <button type="button" class="faq-q">Can I do this without showing my face? <span class="ic">+</span></button>
           <div class="faq-a">Yes. You can remain completely anonymous when owning an Instagram theme page since the page is built around a niche rather than an individual.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Can I cancel the purchase? <span class="ic">+</span></button>
+          <button type="button" class="faq-q">Can I cancel the purchase? <span class="ic">+</span></button>
           <div class="faq-a">Yes! Just send an email to support@niklaspedde.com and we will refund your purchase. No questions asked.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Is my purchase covered with a 60 Day Money-Back Guarantee? <span class="ic">+</span></button>
+          <button type="button" class="faq-q">Is my purchase covered with a 60 Day Money-Back Guarantee? <span class="ic">+</span></button>
           <div class="faq-a">Yes. If you are not satisfied with your order we will refund your total purchase amount. No questions asked.</div>
         </div>
       </div>
@@ -1599,6 +1662,14 @@
 </section>
 
 </main>
+
+<div class="sticky-cta" aria-hidden="true">
+  <div class="sticky-cta-price">
+    <strong>$6.95 today</strong>
+    <span>was $497 · 60-day guarantee</span>
+  </div>
+  <a href="#pricing" class="btn">Get Access</a>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -1742,6 +1813,32 @@
         dots.forEach((d, i) => d.classList.toggle('active', i === nearest));
       }, 80);
     });
+  })();
+
+  // Sticky mobile CTA: show after hero scrolls out, hide once pricing
+  // or footer is in view (avoids stacking with the in-section CTA).
+  (function() {
+    const cta = document.querySelector('.sticky-cta');
+    const hero = document.querySelector('.hero');
+    const pricing = document.querySelector('#pricing');
+    const footer = document.querySelector('.footer');
+    if (!cta || !hero || !pricing || !('IntersectionObserver' in window)) return;
+
+    let heroOut = false, pricingIn = false, footerIn = false;
+    const update = () => {
+      const show = heroOut && !pricingIn && !footerIn;
+      cta.classList.toggle('visible', show);
+      cta.setAttribute('aria-hidden', show ? 'false' : 'true');
+    };
+
+    new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; update(); }, { threshold: 0 })
+      .observe(hero);
+    new IntersectionObserver(([e]) => { pricingIn = e.isIntersecting; update(); }, { threshold: 0.05 })
+      .observe(pricing);
+    if (footer) {
+      new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; update(); }, { threshold: 0 })
+        .observe(footer);
+    }
   })();
 </script>
 
