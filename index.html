@@ -10,14 +10,20 @@
 
   <title>Instagram University: Build A Profitable Instagram Theme Page From Scratch</title>
 
+  <link rel="canonical" href="https://landing-v2.vercel.app/">
+
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://landing-v2.vercel.app/">
+  <meta property="og:site_name" content="Instagram University">
   <meta property="og:title" content="Instagram University: Build A Profitable Instagram Theme Page From Scratch">
   <meta property="og:description" content="The step-by-step system to start, grow and monetise faceless Instagram theme pages.">
-  <meta property="og:image" content="logo.png">
+  <meta property="og:image" content="https://landing-v2.vercel.app/logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Instagram University: Build A Profitable Instagram Theme Page From Scratch">
   <meta name="twitter:description" content="The step-by-step system to start, grow and monetise faceless Instagram theme pages.">
-  <meta name="twitter:image" content="logo.png">
+  <meta name="twitter:image" content="https://landing-v2.vercel.app/logo.png">
 
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -26,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fast.vidalytics.com" crossorigin>
   <link rel="dns-prefetch" href="https://fast.vidalytics.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -55,6 +61,55 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How & when will I get access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upon completion of purchase you will receive an activation email granting access to the course and additional bonuses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This program has been built and developed over the past 8 years and helped scale over 20 Instagram theme pages to a combined following of 17m people generating multi 7 figures in annual revenue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I do this without showing my face?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can remain completely anonymous when owning an Instagram theme page since the page is built around a niche rather than an individual."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I cancel the purchase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Just send an email to support@niklaspedde.com and we will refund your purchase. No questions asked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my purchase covered with a 60 Day Money-Back Guarantee?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. If you are not satisfied with your order we will refund your total purchase amount. No questions asked."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -70,6 +125,20 @@
     }
     :focus { outline: none; }
     :focus-visible { outline: 2px solid #ef4444; outline-offset: 3px; border-radius: 4px; }
+    /* Skip-to-content link: invisible until a keyboard user tabs into it,
+       then anchors to <main> so screen-reader / keyboard users can bypass
+       the header and brand row in one keystroke. */
+    .skip-link {
+      position: absolute; top: 8px; left: 8px;
+      padding: 10px 16px;
+      background: var(--bg-dark); color: var(--text-on-dark);
+      font-size: 14px; font-weight: 700;
+      border-radius: 8px;
+      z-index: 100;
+      transform: translateY(-200%);
+      transition: transform 0.18s ease;
+    }
+    .skip-link:focus { transform: translateY(0); outline: 2px solid var(--red); outline-offset: 2px; }
     img, svg, video { max-width: 100%; height: auto; display: block; }
     button { font: inherit; cursor: pointer; background: none; border: none; color: inherit; }
     a { color: inherit; text-decoration: none; }
@@ -864,6 +933,39 @@
       line-height: 1.55;
       margin-top: 16px;
     }
+    /* Star rating + review count strip directly above the CTA button —
+       reinforces social proof at the point of decision. */
+    .price-social {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: var(--muted-on-dark);
+      margin-bottom: 12px; letter-spacing: 0.1px;
+    }
+    .price-stars { color: #fbbf24; letter-spacing: 1.5px; font-size: 13px; }
+    /* Trust strip below the CTA: secure-checkout lock + payment method
+       indicators. Splits onto two lines on narrow widths. */
+    .price-trust {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      align-items: center; gap: 6px 14px;
+      margin-top: 14px;
+      font-size: 11.5px; color: var(--muted-on-dark);
+      letter-spacing: 0.2px;
+    }
+    .price-secure {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-weight: 600; color: rgba(255,255,255,0.78);
+    }
+    .price-secure svg { width: 13px; height: 13px; color: #34d399; }
+    .price-pay { display: inline-flex; align-items: center; gap: 8px; }
+    .pay-mark {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 34px; height: 20px;
+      padding: 0 6px;
+      font-size: 9.5px; font-weight: 800; letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 4px;
+    }
 
     /* FAQ */
     .faq-block .eyebrow { margin-bottom: 10px; }
@@ -1086,12 +1188,29 @@
       animation: none;
       flex-shrink: 0;
     }
+    .sticky-cta-close {
+      position: absolute;
+      top: -10px; right: -6px;
+      width: 26px; height: 26px;
+      border-radius: 999px;
+      background: #0b0d12;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.7);
+      display: inline-flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: color 0.15s, background 0.15s;
+    }
+    .sticky-cta-close:hover { color: #fff; background: #1a1d24; }
+    .sticky-cta-close svg { width: 12px; height: 12px; }
     @media (max-width: 760px) {
       .sticky-cta { display: flex; }
     }
+    .sticky-cta.dismissed { display: none !important; }
   </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <header class="site-header">
   <div class="container">
@@ -1103,7 +1222,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -1121,17 +1240,6 @@
 
       <div class="hero-video">
         <div id="vidalytics_embed_Ft04sHGFZjXbr9Le" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
-        <script type="text/javascript">
-        (function (v, i, d, a, l, y, t, c, s) {
-            y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
-            if (!vsl){vsl=function(u,cb){
-                if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
-                if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
-                i.getElementsByTagName("head")[0].appendChild(s);
-            };}
-            vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
-        })(window, document, 'Vidalytics', 'vidalytics_embed_Ft04sHGFZjXbr9Le', 'https://fast.vidalytics.com/embeds/89_Ly9OQ/Ft04sHGFZjXbr9Le/');
-        </script>
       </div>
 
       <a href="#pricing" class="btn btn-lg">GET INSTANT ACCESS</a>
@@ -1592,7 +1700,23 @@
         <div class="price-amount"><sup>$</sup>6<span class="dec">.95</span></div>
         <div class="price-save">You save $490 today</div>
         <div class="price-note">One-time payment · No recurring fees · Lifetime updates</div>
+        <div class="price-social">
+          <span class="price-stars">★★★★★</span>
+          <span>Rated 4.2 · 1,900+ Trustpilot reviews</span>
+        </div>
         <a href="#" class="btn btn-lg btn-full">GET INSTANT ACCESS</a>
+        <div class="price-trust">
+          <span class="price-secure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Secure 256-bit SSL checkout
+          </span>
+          <span class="price-pay">
+            <span class="pay-mark">VISA</span>
+            <span class="pay-mark">MC</span>
+            <span class="pay-mark">AMEX</span>
+            <span class="pay-mark">PAYPAL</span>
+          </span>
+        </div>
         <p class="price-guarantee">🛡 60-Day Money Back Guarantee. Go through the training, apply it, and if it's not for you, email us within 60 days and we'll refund every penny. No questions asked.</p>
       </div>
 
@@ -1627,6 +1751,9 @@
 </main>
 
 <div class="sticky-cta" aria-hidden="true">
+  <button type="button" class="sticky-cta-close" aria-label="Dismiss">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+  </button>
   <div class="sticky-cta-price">
     <strong>$6.95 today</strong>
     <span>was $497 · 60-day guarantee</span>
@@ -1778,14 +1905,61 @@
     });
   })();
 
+  // Lazy-load the Vidalytics video. The embed div is left in place to
+  // reserve the 16:9 box (no CLS). The loader runs when the user gets
+  // close to the video OR on first interaction — whichever comes first —
+  // so the hero paints without waiting on the third-party script.
+  (function() {
+    const embed = document.getElementById('vidalytics_embed_Ft04sHGFZjXbr9Le');
+    if (!embed) return;
+    let loaded = false;
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      (function (v, i, d, a, l, y, t, c, s) {
+        y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+        if (!vsl){vsl=function(u,cb){
+          if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+          if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+          i.getElementsByTagName("head")[0].appendChild(s);
+        };}
+        vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+      })(window, document, 'Vidalytics', 'vidalytics_embed_Ft04sHGFZjXbr9Le', 'https://fast.vidalytics.com/embeds/89_Ly9OQ/Ft04sHGFZjXbr9Le/');
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries, obs) => {
+        if (entries[0].isIntersecting) { load(); obs.disconnect(); }
+      }, { rootMargin: '400px 0px' }).observe(embed);
+    }
+    ['pointerdown', 'touchstart', 'scroll'].forEach(ev =>
+      window.addEventListener(ev, load, { once: true, passive: true })
+    );
+    if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 2500 });
+    else setTimeout(load, 1500);
+  })();
+
   // Sticky mobile CTA: show after hero scrolls out, hide once pricing
   // or footer is in view (avoids stacking with the in-section CTA).
+  // Dismissible — stays dismissed for the rest of the session.
   (function() {
     const cta = document.querySelector('.sticky-cta');
     const hero = document.querySelector('.hero');
     const pricing = document.querySelector('#pricing');
     const footer = document.querySelector('.footer');
+    const closeBtn = cta && cta.querySelector('.sticky-cta-close');
     if (!cta || !hero || !pricing || !('IntersectionObserver' in window)) return;
+
+    let dismissed = false;
+    try { dismissed = sessionStorage.getItem('stickyCtaDismissed') === '1'; } catch (e) {}
+    if (dismissed) { cta.classList.add('dismissed'); return; }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        cta.classList.add('dismissed');
+        cta.setAttribute('aria-hidden', 'true');
+        try { sessionStorage.setItem('stickyCtaDismissed', '1'); } catch (e) {}
+      });
+    }
 
     let heroOut = false, pricingIn = false, footerIn = false;
     const update = () => {
