@@ -539,6 +539,198 @@
       .bonus-banner-list li { padding: 12px 14px; }
     }
 
+    /* BEFORE / AFTER TRANSFORMATION — dark contrast block sandwiched
+       between What's Inside and the founder section. Two cards side by
+       side, before-card tinted with the muted red, after-card with the
+       brand red and check icons. */
+    .transform-section {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .transform-section::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 0%, rgba(239,68,68,0.10), transparent 70%),
+        radial-gradient(ellipse 70% 50% at 85% 100%, rgba(239,68,68,0.10), transparent 70%);
+      pointer-events: none;
+    }
+    .transform-section .container { position: relative; }
+    .transform-section .eyebrow { color: #fca5a5; }
+    .transform-section .section-head h2 { color: var(--text-on-dark); }
+    .transform-section .section-lead { color: var(--muted-on-dark); }
+    .transform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+      position: relative;
+    }
+    .transform-card {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.04), transparent 65%),
+        linear-gradient(160deg, #14171f 0%, #0a0c12 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 26px 24px 24px;
+      display: flex; flex-direction: column;
+      gap: 16px;
+    }
+    .transform-card-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      align-self: flex-start;
+      padding: 5px 12px;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      border-radius: 999px;
+    }
+    .transform-card.before .transform-card-label {
+      background: rgba(239,68,68,0.12); color: #fca5a5;
+      border: 1px solid rgba(239,68,68,0.22);
+    }
+    .transform-card.after .transform-card-label {
+      background: rgba(52,211,153,0.12); color: #6ee7b7;
+      border: 1px solid rgba(52,211,153,0.25);
+    }
+    .transform-card h3 {
+      font-size: 19px; font-weight: 800;
+      color: var(--text-on-dark);
+      line-height: 1.25; letter-spacing: -0.3px;
+      margin: 0;
+    }
+    .transform-list {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 11px;
+      margin: 0;
+    }
+    .transform-list li {
+      position: relative;
+      display: flex; align-items: flex-start; gap: 11px;
+      font-size: 14.5px; line-height: 1.5;
+      color: rgba(255,255,255,0.78);
+    }
+    .transform-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      margin-top: 2px;
+      border-radius: 50%;
+      display: inline-flex;
+    }
+    .transform-card.before .transform-list li::before {
+      background:
+        rgba(239,68,68,0.14)
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fca5a5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='7' x2='17' y2='17'/><line x1='7' y1='17' x2='17' y2='7'/></svg>") center / 11px no-repeat;
+      border: 1px solid rgba(239,68,68,0.25);
+    }
+    .transform-card.after .transform-list li::before {
+      background:
+        rgba(52,211,153,0.14)
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236ee7b7' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / 12px no-repeat;
+      border: 1px solid rgba(52,211,153,0.28);
+    }
+    /* Subtle arrow between the two cards on desktop reinforces the
+       transformation direction. Hidden on stacked mobile. */
+    .transform-grid::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 8px 20px rgba(239,68,68,0.45);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 6 15 12 9 18'/></svg>");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      z-index: 2;
+    }
+    @media (max-width: 760px) {
+      .transform-grid { grid-template-columns: 1fr; gap: 12px; }
+      .transform-grid::after { display: none; }
+      .transform-card { padding: 22px 20px; }
+    }
+
+    /* FIT-CHECK (Who this is / isn't for) — sits right before pricing
+       and softly qualifies leads. Two columns, green checks vs grey X's. */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .fit-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 24px 24px;
+      display: flex; flex-direction: column;
+      gap: 18px;
+    }
+    .fit-card.not-for {
+      background: #f8f9fb;
+      border-color: #e5e7eb;
+    }
+    .fit-card-head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .fit-card-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .fit-card.for .fit-card-icon {
+      background: rgba(16,185,129,0.12);
+      color: #059669;
+    }
+    .fit-card.not-for .fit-card-icon {
+      background: rgba(107,114,128,0.10);
+      color: #6b7280;
+    }
+    .fit-card-icon svg { width: 18px; height: 18px; }
+    .fit-card h3 {
+      font-size: 18px; font-weight: 800;
+      letter-spacing: -0.3px; line-height: 1.2;
+      margin: 0;
+    }
+    .fit-list {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 11px;
+      margin: 0;
+    }
+    .fit-list li {
+      position: relative;
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14.5px; line-height: 1.5;
+      color: #1f2937;
+    }
+    .fit-card.not-for .fit-list li { color: #6b7280; }
+    .fit-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      margin-top: 2px;
+      border-radius: 50%;
+    }
+    .fit-card.for .fit-list li::before {
+      background:
+        rgba(16,185,129,0.12)
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 12 10 17 19 7'/></svg>") center / 12px no-repeat;
+    }
+    .fit-card.not-for .fit-list li::before {
+      background:
+        rgba(107,114,128,0.10)
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='7' x2='17' y2='17'/><line x1='7' y1='17' x2='17' y2='7'/></svg>") center / 11px no-repeat;
+    }
+    @media (max-width: 760px) {
+      .fit-grid { grid-template-columns: 1fr; gap: 12px; }
+      .fit-card { padding: 22px 20px; }
+    }
+
     /* FOUNDER + PORTFOLIO - single-column flow so portfolio cards can span full width */
     .founder-grid {
       display: flex; flex-direction: column;
@@ -1383,6 +1575,42 @@
   </div>
 </section>
 
+<!-- BEFORE / AFTER TRANSFORMATION -->
+<section class="section transform-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Shift</span>
+      <h2>Before Instagram University vs. After</h2>
+      <p class="section-lead">A clear before/after most students walk through in their first 90 days inside.</p>
+    </div>
+
+    <div class="transform-grid">
+      <div class="transform-card before">
+        <span class="transform-card-label">Before</span>
+        <h3>Stuck, scattered, invisible</h3>
+        <ul class="transform-list">
+          <li>Posting random content with no real niche or angle</li>
+          <li>Follower count flat for weeks — no idea why</li>
+          <li>Zero clue how to actually monetise an audience</li>
+          <li>Drowning in conflicting "Instagram hacks" online</li>
+          <li>Spending hours on content that doesn't land</li>
+        </ul>
+      </div>
+      <div class="transform-card after">
+        <span class="transform-card-label">After</span>
+        <h3>Locked in, growing, monetised</h3>
+        <ul class="transform-list">
+          <li>A profitable, proven niche you can post in daily</li>
+          <li>A content engine that compounds week after week</li>
+          <li>Multiple income streams: deals, products, affiliates</li>
+          <li>A clear daily playbook — no more guessing</li>
+          <li>Following the same system that built 20+ pages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDER + PORTFOLIO -->
 <section class="section section-soft">
   <div class="container">
@@ -1685,6 +1913,50 @@
   </div>
 </section>
 
+<!-- FIT CHECK -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Honest Fit Check</span>
+      <h2>Who Instagram University Is — And Isn't — For</h2>
+      <p class="section-lead">We'd rather you skip the program than buy and feel mismatched. Here's the truth.</p>
+    </div>
+
+    <div class="fit-grid">
+      <div class="fit-card for">
+        <div class="fit-card-head">
+          <span class="fit-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"/></svg>
+          </span>
+          <h3>This is for you if…</h3>
+        </div>
+        <ul class="fit-list">
+          <li>You're starting from zero — no audience, no offer, no experience needed</li>
+          <li>You want to build a faceless brand and stay completely anonymous</li>
+          <li>You can commit to posting consistently and following a system</li>
+          <li>You're looking for a real path to monetise Instagram, not theory</li>
+          <li>You want to learn from operators who actually run 20+ profitable pages</li>
+        </ul>
+      </div>
+      <div class="fit-card not-for">
+        <div class="fit-card-head">
+          <span class="fit-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+          </span>
+          <h3>This isn't for you if…</h3>
+        </div>
+        <ul class="fit-list">
+          <li>You want overnight results without putting in any work</li>
+          <li>You're chasing the next "viral hack" instead of building a real asset</li>
+          <li>You're not willing to post content consistently for the first 90 days</li>
+          <li>You need someone to build the page for you — this is a do-it-yourself system</li>
+          <li>You're already running multiple 7-figure theme pages and need nothing new</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING + FAQ -->
 <section class="section section-soft" id="pricing">
   <div class="container">
@@ -1795,7 +2067,7 @@
   (function() {
     // Containers whose children should stagger in (cards in a grid)
     const staggerTargets = document.querySelectorAll(
-      '.how-steps, .modules, .stories, .portfolio, .stats-strip-inner'
+      '.how-steps, .modules, .stories, .portfolio, .stats-strip-inner, .transform-grid, .fit-grid'
     );
     staggerTargets.forEach(el => el.classList.add('reveal-stagger'));
 
